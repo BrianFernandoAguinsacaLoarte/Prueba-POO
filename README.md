@@ -27,3 +27,6 @@ Imagenes del proyecto
  
  https://drive.google.com/drive/folders/1JNDQEG24IaQpI-EorblGpXLWMFO-iv3X?usp=sharing 
  
+ Link del repositorio en GitHub
+ 
+ https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO.git
