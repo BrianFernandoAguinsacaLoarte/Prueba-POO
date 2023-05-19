@@ -24,5 +24,6 @@ Imagenes del proyecto
  ![GitKraken2](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/133794609/9a8a659c-ff08-4c61-af17-1106c5a144fe)
  
  Documento Prueba 
+ 
  https://drive.google.com/drive/folders/1JNDQEG24IaQpI-EorblGpXLWMFO-iv3X?usp=sharing 
  
