@@ -1,2 +1,2 @@
 # Prueba POO
-System.out.println("Hola mancos");
+System.out.println("HOLA ESTE ES MI PROGRAMA DE SABERES INTERDISCIPLINARIOS");
