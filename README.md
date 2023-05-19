@@ -1,5 +1,5 @@
 
-                                                                   UNL FUTBOL PLAY 
+                                                                   UNL FÚTBOL PLAY 
                     
    ![73774](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/133794609/ae235a3f-2a71-4d55-b6c6-95e8d252fcc6)
 
@@ -14,7 +14,7 @@ Integrantes:
   
     Abel Alejandro Mora López
 
-Imagenes del proyecto
+Imágenes del proyecto
   
   UML
   
