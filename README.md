@@ -12,8 +12,10 @@ Integrantes:
   
     Estefanía Carolina Torres Balcázar
   
-    Abel Alejandro Mora Lópe
+    Abel Alejandro Mora López
+
 Imagenes del proyecto
+  
   UML
   
   ![Uml](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/133794609/cf984d97-3743-4123-ad25-5d87b3fcd21e)
