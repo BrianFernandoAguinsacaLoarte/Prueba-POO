@@ -6,7 +6,11 @@
 
                                               
 Integrantes:
-  Darwin Andrés Sarango Soto
-  Brian Fernando Aguinsaca Loarte
-  Estefanía Carolina Torres Balcázar
-  Abel Alejandro Mora Lópe
+  
+    Darwin Andrés Sarango Soto
+  
+    Brian Fernando Aguinsaca Loarte
+  
+    Estefanía Carolina Torres Balcázar
+  
+    Abel Alejandro Mora Lópe
