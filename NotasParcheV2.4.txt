@@ -1,0 +1,8 @@
+Implementación de mejora "Modo Oscuro"
+> La implementación de la mejora "Modo Oscuro" 
+es una actualización que agrega una opción de
+visualización alternativa en una aplicación, 
+sitio web o plataforma. Esta mejora permite 
+a los usuarios cambiar la apariencia del 
+software a un esquema de colores oscuros en 
+lugar del tradicional esquema de colores claros.
