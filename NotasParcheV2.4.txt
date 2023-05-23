@@ -6,3 +6,4 @@ sitio web o plataforma. Esta mejora permite
 a los usuarios cambiar la apariencia del 
 software a un esquema de colores oscuros en 
 lugar del tradicional esquema de colores claros.
+además de implementar el modo de colores por usuario.
