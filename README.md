@@ -13,6 +13,8 @@ Integrantes:
     Estefanía Carolina Torres Balcázar
   
     Abel Alejandro Mora López
+    
+    Miguel Angel Luna Yunga 
 
 Imágenes del proyecto
   
