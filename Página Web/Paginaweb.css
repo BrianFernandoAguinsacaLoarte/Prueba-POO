@@ -1,0 +1,226 @@
+body{
+    background-color: white;
+    align-items: center;
+}
+.imagenfondo{
+    background-color: #81B9F2;
+}
+.avatar{
+    padding: 20px;
+    width: 200px;
+    height: 200px;
+    border-radius: 75%;
+    display: inline-block;
+    background-size: cover;
+}
+
+.header{
+    text-align: center;
+    height: 300px;
+    padding: 12px;
+    background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-simple-light-blue-solid-background-colorbluelight-bluesolid-backgroundposter-image_49644.jpg);
+    
+}
+
+.user-name{
+    text-align: left;
+    color: black;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: 600px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Roboto', Comic Sans MS, cursive, sans-serif;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #DDDDEA;
+    
+    width: 330px;
+    height: 30px;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    line-height: 1;
+    
+}
+.cajonpec{
+
+    display: flex;
+    min-width: 100px;
+    border-radius: 10px;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+.cajonpec:first-child{
+    flex: 2;
+    padding: 25px;
+    background-color: #fff;
+    margin: 20px;
+    margin-bottom: 0px;
+}
+.cajonpec div {
+    padding: 25px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.icon{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-size: cover;
+}
+.email{
+    background-image: url(https://cdn-icons-png.flaticon.com/512/3296/3296467.png);
+}
+
+.about{
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #f5eded;
+  
+}
+.about h2{
+    color: #545454;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.about p{
+    color: #545454;
+    font-size: 20px;
+    line-height: 1.5;
+}
+.text{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color:	black;
+    font-size: 30px;
+    line-height: 1.5;
+}
+.text1{
+    width: 140px;
+    
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: black;
+    font-size: 30px;
+    line-height: 1.5;
+    background-color: #00d1ff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+
+}
+.uml{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color:black;
+    font-size: 30px;
+    line-height: 1.5;
+    margin-left:1600px; 
+    display: flex;
+}
+
+.home{
+    display: flex;
+    padding:20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color:	#808080;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    font-size: 25px;
+    background-color: #81B9F2;
+}
+
+.in-flex{
+    flex: 1;
+    min-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    color: black;
+}
+
+.in-flex:first-child{
+    flex: 2;
+    padding: 25px;
+    background-color: #fff;
+    margin: 20px;
+    margin-bottom: 0px;
+}
+.in-flex div {
+    padding: 25px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.unlimg{
+    width: 300px;
+    height: 200px;
+}
+.shop{
+    width: 155px;
+    height: 50px;
+    padding: 5px;
+    flex: 1.5;
+    display: flex;
+    font-size: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #D1F2EB;
+}
+.shop1{
+    width: 210px;
+    height: 50px;
+    padding: 5px;
+    flex: 1.5;
+    display: flex;
+    font-size: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color:#D1F2EB;
+}
+
+.acercade{
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.colaboradores{
+
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 30px;
+    font-size: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: inline-block;
+    text-align: center;
+    width: 190px;
+    background-color: #c5e3f6;
+    margin-left: 30px;
+    margin-top: 30px;
+  
+}
+.colaboradoresimg{
+    width: 190px;
+    height: 150px;
+    border-radius: 75%;
+    display: inline-block;
+    left: 20px;
+    background-size: cover;
+    
+}
+
+
