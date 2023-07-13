@@ -1,7 +1,7 @@
 
                                                                    UNL FÚTBOL PLAY 
                     
-   ![73774](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/133794609/ae235a3f-2a71-4d55-b6c6-95e8d252fcc6)
+![WhatsApp Image 2023-07-12 at 8 14 11 PM](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/118997463/fbeea873-bfe8-49ad-bb25-3f97c5f983ef)
 
                                               
 Integrantes:
