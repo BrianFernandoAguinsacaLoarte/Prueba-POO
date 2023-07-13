@@ -35,15 +35,14 @@ body{
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     background-color: #DDDDEA;
-    
     width: 330px;
     height: 30px;
     padding: 10px;
     margin-left: 20px;
     margin-right: 20px;
-    line-height: 1;
-    
+    line-height: 1;   
 }
+
 .cajonpec{
 
     display: flex;
