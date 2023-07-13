@@ -1,1 +1,0 @@
-correcion intefaz por error de sintaxis y caida de la pagina
