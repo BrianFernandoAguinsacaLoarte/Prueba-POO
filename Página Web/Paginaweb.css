@@ -2,9 +2,11 @@ body{
     background-color: white;
     align-items: center;
 }
+
 .imagenfondo{
     background-color: #81B9F2;
 }
+
 .avatar{
     padding: 20px;
     width: 200px;
@@ -18,8 +20,7 @@ body{
     text-align: center;
     height: 300px;
     padding: 12px;
-    background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-simple-light-blue-solid-background-colorbluelight-bluesolid-backgroundposter-image_49644.jpg);
-    
+    background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-simple-light-blue-solid-background-colorbluelight-bluesolid-backgroundposter-image_49644.jpg);   
 }
 
 .user-name{
