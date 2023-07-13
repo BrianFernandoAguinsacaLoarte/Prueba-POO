@@ -119,9 +119,8 @@ body{
     background-color: #00d1ff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-
-
 }
+
 .uml{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -160,6 +159,7 @@ body{
     margin: 20px;
     margin-bottom: 0px;
 }
+
 .in-flex div {
     padding: 25px;
     background-color: #fff;
@@ -167,6 +167,7 @@ body{
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+
 .unlimg{
     width: 300px;
     height: 200px;
