@@ -27,6 +27,13 @@ Problema:Implementar en código la clase Equipos.
 
 Descripción del Problema
 El inconveniente que se tuvo un problema en el código al momento de ingresar los equipos y al momento que se presenten los diferentes
-Equipos debía de salir los respectivos Jugadores por el cual no presentaba lo dicho anteriormente 
+Equipos debía de salir los respectivos Jugadores por el cual no presentaba lo dicho anteriormente.
 
+Clase Deporte 
+Prioridad Alta
+Responsable Migel 
+Quien lo va a generar?:Lo va a generar Migel 
+Problema:Codigo Java 
+Descripcion del Probelma: Respecto al codigo en java se presento un inconveniente  a no poder agregar un nuevo deporte ya que unicamente
+se estaba trabajando con 3 deportes predeterminados en pocas palabras no puede el ususario escoger el deporte que desea 
 
