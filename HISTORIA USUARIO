@@ -11,11 +11,22 @@ En este punto se presento un inconveniente con la interfaz,con el ingreso de jug
 causaba una interrupción es decir se volvía lento y poco receptivo, además al principio solo se podía ingresar máximo 2 jugadores.
 
 Clase Reglamento
-Prioridad	Medio 	
+Prioridad Medio	
 Responsable:Estefania 
-¿Quien lo va a generar?: Lo va a generar Estefania 
-Problema: Relación Regla y Reglamento 
+¿Quien lo va a generar?: Lo va a generar Estefania.
+Problema: Relación entre la clase Regla y Reglamento.
 
 Descripción del Problema
 En las clases tanto reglamento como regla se tuvo una confusión de la manera de implementarlas esta al momento de que se cumplan en los partidos 
+
+Clase Equipo
+Prioridad	Medio 	
+Responsable:Estefania
+¿Quién lo va a generar?:Lo va a generar Estefania  
+Problema:Implementar en código la clase Equipos.
+
+Descripción del Problema
+El inconveniente que se tuvo un problema en el código al momento de ingresar los equipos y al momento que se presenten los diferentes
+Equipos debía de salir los respectivos Jugadores por el cual no presentaba lo dicho anteriormente 
+
 
