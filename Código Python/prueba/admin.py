@@ -7,6 +7,7 @@ admin.site.register(Persona)
 admin.site.register(Jugador)
 admin.site.register(JugadorInscrito)
 admin.site.register(Inscripcion)
+
 admin.site.site_header = 'Administración de Interfaz'
 admin.site.register(Competencia)
 admin.site.register(Reglamento)
