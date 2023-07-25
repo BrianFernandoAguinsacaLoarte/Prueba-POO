@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Reglamento</title>
+    <link rel="stylesheet" href="/css/reglamento.css">
+</head>
+    
+<body>
+    <h1>Reglamento</h1>
+
+  <form id="registrationForm" action="#" method="post">
+    <label for="teamName">Nombre:</label>
+    <input type="text" id="teamName" name="teamName" required>
+    
+    <label for="startDate">Fecha:</label>
+    <input type="date" id="startDate" name="startDate" required>
+
+    
+    <button  type="button" id="addPlayerButton">Agregar Regla</button>  <br>
+      <script>
+        // Agregar el evento clic al botón
+        document.getElementById("addPlayerButton").addEventListener("click", function() {
+          // Redirigir a la página jugador.html
+          window.location.href = "regla.html";
+        });
+      </script>
+    <button  type="button" id="addPlayerButton">Agregar Reglamento</button>  <br>
+  </form>
+
+  <div id="registrationStatus">
+    <h2>Estado de la Inscripción:</h2>
+    <p id="statusMessage"></p>
+  </div>
+    
+</body>
+</html>
