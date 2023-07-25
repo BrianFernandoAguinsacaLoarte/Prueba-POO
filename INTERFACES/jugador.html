@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Inscripcion Jugador</title>
+    <link rel="stylesheet" href="/css/jugador.css">
+</head>
+<body>  
+    <h1>Jugadores</h1>
+    <form id="registrationForm" action="#" method="post">
+        
+    <div id="playersContainer">
+      <div class="player">
+        <label for="playerName1">Nombre:</label>
+        <input type="text" id="playerName1" name="playerName[]" required>
+
+        <label for="teamName">Número de camiseta:</label>    
+        <input type="number" id="teamName" name="teamName" required min="0">
+
+        <label for="playerRole1">Rol:</label>
+        <select id="playerRole1" name="playerRole[]">
+          <option value="Delantero">Delantero</option>
+          <option value="Centrocampista">Centrocampista</option>
+          <option value="Defensa">Defensa</option>
+          <option value="Portero">Portero</option>
+        </select>
+      </div>
+    </div>
+    <button type="button" id="addPlayerButton">Agregar Jugador</button>
+    <script>
+        // Agregar el evento clic al botón
+        document.getElementById("addPlayerButton").addEventListener("click", function() {
+          // Redirigir a la página jugador.html
+          window.location.href = "deporte.html";
+        });
+      </script>
+    </form>
+</body>
+</html>

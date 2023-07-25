@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Temporada</title>
+    <link rel="stylesheet" href="/css/temporada.css">
+</head>
+    
+<body>
+    <h1>Temporada</h1>
+
+  <form id="registrationForm" action="#" method="post">
+    <label for="teamName">Nombre:</label>
+    <input type="text" id="teamName" name="teamName" required>
+    
+    <label for="startDate">Fecha de Inicio:</label>
+    <input type="date" id="startDate" name="startDate" required>
+
+    <label for="startDate">Fecha de Fin:</label>
+    <input type="date" id="startDate" name="startDate" required>
+
+    <label for="sport">Modo de Juego:</label>
+    <select id="sport" name="sport">
+      <option value="futbol">Ligas</option>
+      <option value="baloncesto">Fase Grupos</option>
+      <option value="ecuavoley">Eliminatorias</option>
+      <option value="ecuavoley">Amistoso</option>
+    </select>
+    
+    <button  type="button" id="addPlayerButton">Agregar Temporada en Competencia</button>  <br>
+      <script>
+        // Agregar el evento clic al botón
+        document.getElementById("addPlayerButton").addEventListener("click", function() {
+          // Redirigir a la página jugador.html
+          window.location.href = "competencia.html";
+        });
+      </script>
+
+  </form>
+
+  <div id="registrationStatus">
+    <h2>Estado de la Inscripción:</h2>
+    <p id="statusMessage"></p>
+  </div>
+    
+</body>
+</html>

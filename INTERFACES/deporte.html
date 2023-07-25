@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Inscripción de Equipo Deportivo</title>
+  <link rel="stylesheet" href="/css/deporte.css">
+</head>
+
+<body>
+  <h1>Inscripción de Equipo Deportivo</h1>
+
+  <form id="registrationForm" action="#" method="post">
+    <label for="teamName">Nombre del Equipo:</label>
+    <input type="text" id="teamName" name="teamName" required>
+    
+
+    <label for="sport">Deporte:</label>
+    <select id="sport" name="sport">
+      <option value="futbol">Fútbol</option>
+      <option value="baloncesto">Baloncesto</option>
+      <option value="ecuavoley">Ecuavoley</option>
+    </select>
+    
+    <button  type="button" id="addPlayerButton">Agregar Jugador</button>  <br>
+      <script>
+        // Agregar el evento clic al botón
+        document.getElementById("addPlayerButton").addEventListener("click", function() {
+          // Redirigir a la página jugador.html
+          window.location.href = "jugador.html";
+        });
+      </script>
+      
+    <button type="button" id="addPlayerButton">Agregar Equipo</button> 
+    
+    <input type="submit" value="Enviar Inscripción">
+  </form>
+
+  <div id="registrationStatus">
+    <h2>Estado de la Inscripción:</h2>
+    <p id="statusMessage"></p>
+  </div>
+
+  <script>
+    var playerCount = 1;
+
+    document.getElementById("addPlayerButton").addEventListener("click", function() {
+      var playersContainer = document.getElementById("playersContainer");
+      var newPlayerDiv = document.createElement("div");
+      newPlayerDiv.classList.add("player");
+
+      var playerNameLabel = document.createElement("label");
+      playerNameLabel.textContent = "Nombre:";
+      var playerNameInput = document.createElement("input");
+      playerNameInput.type = "text";
+      playerNameInput.name = "playerName[]";
+      playerNameInput.required = true;
+
+      var playerRoleLabel = document.createElement("label");
+      playerRoleLabel.textContent = "Rol:";
+      var playerRoleSelect = document.createElement("select");
+      playerRoleSelect.name = "playerRole[]";
+
+      var roles = ["Delantero", "Centrocampista", "Defensa", "Portero"];
+      for (var i = 0; i < roles.length; i++) {
+        var roleOption = document.createElement("option");
+        roleOption.value = roles[i];
+        roleOption.textContent = roles[i];
+        playerRoleSelect.appendChild(roleOption);
+      }
+
+      newPlayerDiv.appendChild(playerNameLabel);
+      newPlayerDiv.appendChild(playerNameInput);
+      newPlayerDiv.appendChild(playerRoleLabel);
+      newPlayerDiv.appendChild(playerRoleSelect);
+
+      playersContainer.appendChild(newPlayerDiv);
+
+      playerCount++;
+    });
+
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Simular una solicitud de inscripción (aquí es donde se realizaría una solicitud al servidor para procesar la inscripción)
+
+      // Obtener los datos del formulario
+      var teamName = document.getElementById("teamName").value;
+      var sport = document.getElementById("sport").value;
+      var captainName = document.getElementById("captainName").value;
+      var email = document.getElementById("email").value;
+      var players = [];
+
+      var playerInputs = document.querySelectorAll("input[name='playerName[]']");
+      var roleSelects = document.querySelectorAll("select[name='playerRole[]']");
+
+      for (var i = 0; i < playerInputs.length; i++) {
+        var playerName = playerInputs[i].value;
+        var playerRole = roleSelects[i].value;
+        players.push({ name: playerName, role: playerRole });
+      }
+
+      // Simular un procesamiento de inscripción exitoso
+      var successMessage = "¡El equipo " + teamName + " (" + sport + ") ha sido inscrito exitosamente!";
+
+      // Mostrar el estado de la inscripción
+      document.getElementById("statusMessage").textContent = successMessage;
+      document.getElementById("registrationStatus").style.display = "block";
+    });
+  </script>
+</body>
+</html>

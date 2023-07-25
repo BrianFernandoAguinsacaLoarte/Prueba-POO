@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Partido</title>
+    <link rel="stylesheet" href="/css/partido.css">
+</head>
+    
+<body>
+    <h1>Partido</h1>
+
+  <form id="registrationForm" action="#" method="post">
+    <label for="teamName">Equipo Local:</label>
+    <input type="text" id="teamName" name="teamName" required>
+
+    <label for="teamName">Equipo Visitante:</label>
+    <input type="text" id="teamName" name="teamName" required>
+    
+    <label for="startDate">Fecha:</label>
+    <input type="date" id="startDate" name="startDate" required>
+    
+
+    <label for="sport">Estado:</label>
+    <select id="sport" name="sport">
+      <option value="futbol">Iniciado</option>
+      <option value="baloncesto">Aplazado</option>
+      <option value="ecuavoley">Suspendido</option>
+      <option value="ecuavoley">Finalizado</option>
+    </select>
+
+    <label for="teamName">Puntaje:</label>
+    <label for="teamName">Local:</label>
+    <input type="number" id="teamName" name="teamName" required min="0">
+    <label for="teamName">Visitante:</label>    
+    <input type="number" id="teamName" name="teamName" required min="0">
+
+    <label for="teamName">Tiempo:</label>
+    <input type="number" id="teamName" name="teamName" required min="0">
+    
+
+    <button  type="button" id="addPlayerButton">Agregar Regla</button>  <br>
+      <script>
+        // Agregar el evento clic al botón
+        document.getElementById("addPlayerButton").addEventListener("click", function() {
+          // Redirigir a la página jugador.html
+          window.location.href = "regla.html";
+        });
+      </script>
+    <button  type="button" id="addPlayerButton">Agregar Reglamento</button>  <br>
+  </form>
+
+  <div id="registrationStatus">
+    <h2>Estado de la Inscripción:</h2>
+    <p id="statusMessage"></p>
+  </div>
+    
+</body>
+</html>
