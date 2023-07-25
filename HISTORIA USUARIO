@@ -1,0 +1,39 @@
+UNIDAD 2: HISTORIAS DE USUARIOS
+
+Funcionamiento Interfaz
+Prioridad	Alta	
+Responsable	Brian 
+¿Quien lo va a generar?	Lo va a generar Brian  
+Problema: Sistema de ingreso de jugadores
+
+Descripción del Problema
+En este punto se presento un inconveniente con la interfaz,con el ingreso de jugadores ya que, al manejar un gran volumen de datos,
+causaba una interrupción es decir se volvía lento y poco receptivo, además al principio solo se podía ingresar máximo 2 jugadores.
+
+Clase Reglamento
+Prioridad Medio	
+Responsable:Estefania 
+¿Quien lo va a generar?: Lo va a generar Estefania.
+Problema: Relación entre la clase Regla y Reglamento.
+
+Descripción del Problema
+En las clases tanto reglamento como regla se tuvo una confusión de la manera de implementarlas esta al momento de que se cumplan en los partidos 
+
+Clase Equipo
+Prioridad	Medio 	
+Responsable:Estefania
+¿Quién lo va a generar?:Lo va a generar Estefania  
+Problema:Implementar en código la clase Equipos.
+
+Descripción del Problema
+El inconveniente que se tuvo un problema en el código al momento de ingresar los equipos y al momento que se presenten los diferentes
+Equipos debía de salir los respectivos Jugadores por el cual no presentaba lo dicho anteriormente.
+
+Clase Deporte 
+Prioridad Alta
+Responsable Migel 
+Quien lo va a generar?:Lo va a generar Migel 
+Problema:Codigo Java 
+Descripcion del Probelma: Respecto al codigo en java se presento un inconveniente  a no poder agregar un nuevo deporte ya que unicamente
+se estaba trabajando con 3 deportes predeterminados en pocas palabras no puede el ususario escoger el deporte que desea 
+
