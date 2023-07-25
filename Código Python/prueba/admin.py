@@ -1,6 +1,5 @@
 from django.contrib import admin
-
-
+# Importar los modelos 
 from prueba.models import Persona, Jugador, Inscripcion, JugadorInscrito, Competencia, Reglamento, Arbitro, Regla, \
     Temporada, EquipoInscrito, Equipo, Modalidad, Asignacion, Partido, Marcador
 
