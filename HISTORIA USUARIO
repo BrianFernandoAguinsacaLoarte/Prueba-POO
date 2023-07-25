@@ -38,7 +38,13 @@ Descripcion del Probelma: Respecto al codigo en java se presento un inconvenient
 se estaba trabajando con 3 deportes predeterminados en pocas palabras no puede el ususario escoger el deporte que desea
 
 Clase Jugador 
-Prioridad Alta 
-Responsable Migel 
-¿Quien lo va a generar? Lo va a generar Abel y Migel
+Prioridad:Alta 
+Responsable:Migel 
+¿Quien lo va a generar?:Lo va a generar Abel y Migel.
+Problema: Validar Jugador clase Jugador 
+
+Descripción del Problema:
+Este problema se presentó al momento de ingresar Jugador, donde al momento de introducir se produce errores en la validación de los datos del jugador.
+Esto puede resultar en la aceptación de datos incorrectos o en el rechazo de datos válidos, lo que comprometería la integridad de la información.
+
 
