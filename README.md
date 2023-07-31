@@ -19,9 +19,10 @@ Integrantes:
 
 Imágenes del proyecto
   
-  UML
-  
-  ![Uml](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/133794609/cf984d97-3743-4123-ad25-5d87b3fcd21e)
+  UML:
+  ![descarga](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/129ee544-31ea-4eae-9d4a-0b546ad34855)
+
+
  Gestión del proyecto del GitKraken
 
  https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO.git
