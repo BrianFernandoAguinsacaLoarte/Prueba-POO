@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Definir Equipo</title>
+</head>
+<body>
+    <h1>Definir Equipo</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="nombre_equipo">Nombre del Equipo:</label>
+        <label>
+            <input type="text" name="nombre_equipo" required>
+        </label><br>
+        <button type="submit">Guardar</button>
+    </form>
+    <h2>Equipos registrados:</h2>
+    <ul>
+        {% for equipo in equipos %}
+        <li>
+            {{ equipo.nombre }}
+            <form method="post" action="{% url 'eliminar_equipo' equipo.id %}">
+                {% csrf_token %}
+                <button type="submit">Eliminar</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

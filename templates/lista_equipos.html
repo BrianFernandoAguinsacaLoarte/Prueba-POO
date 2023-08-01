@@ -1,0 +1,16 @@
+<!-- lista_equipos.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Equipos</title>
+</head>
+<body>
+    <h1>Lista de Equipos</h1>
+    <ul>
+        {% for equipo in equipos %}
+        <li>{{ equipo.nombre }} - Ciudad: {{ equipo.ciudad }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

@@ -1,0 +1,126 @@
+<!-- ... código anterior ... -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Programar Partidos</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #008080;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input[type="date"],
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #008080;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #006666;
+        }
+
+        h2 {
+            color: #008080;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+    <h1>Programar Partidos</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+    <label for="lugar">Lugar:</label>
+    <input type="text" name="lugar" required>
+    </div>
+<div class="form-group">
+    <label for="hora">Hora:</label>
+    <input type="time" name="hora" required>
+</div>
+        <div class="form-group">
+            <label for="fecha">Fecha:</label>
+            <input type="date" name="fecha" required>
+        </div>
+        <div class="form-group">
+            <label for="evento">Evento:</label>
+            <input type="text" name="evento" required>
+        </div>
+        <div class="form-group">
+            <label for="equipo">Equipo:</label>
+            <label>
+                <select name="equipo">
+                    {% for equipo in equipos %}
+                    <option value="{{ equipo.id }}">{{ equipo.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="deporte">Deporte:</label>
+            <select name="deporte">
+                <!-- Agregar las opciones para los diferentes deportes -->
+                <option value="futbol">Fútbol</option>
+                <option value="baloncesto">Baloncesto</option>
+                <option value="voleibol">Tenis</option>
+                <!-- Agregar más opciones según tus necesidades -->
+            </select>
+        </div>
+        <button type="submit">Programar Partido</button>
+    </form>
+    <h2>Horarios Programados</h2>
+    <ul>
+        {% for horario in horarios %}
+            <li>{{ horario.fecha }} - {{ horario.hora }} - {{ horario.equipo }} - {{ horario.evento }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+<!-- ... código posterior ... -->

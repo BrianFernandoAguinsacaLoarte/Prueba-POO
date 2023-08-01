@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IngresarJugador</title>
+</head>
+<body style="background-color: #f2f2f2; font-family: Arial, sans-serif; text-align: center;">
+    <h1 style="margin-bottom: 20px;">Ingresar Jugador</h1>
+    <form method="post" style="margin-bottom: 20px;">
+        {% csrf_token %}
+        <label for="nombre" style="display: block;">Nombre:</label>
+        <input type="text" name="nombre" required style="margin-bottom: 10px;"><br>
+        <label for="apellido" style="display: block;">Apellido:</label>
+        <input type="text" name="apellido" required style="margin-bottom: 10px;"><br>
+        <label for="edad" style="display: block;">Edad:</label>
+        <input type="number" name="edad" required style="margin-bottom: 10px;"><br>
+        <label for="genero" style="display: block;">Género:</label>
+        <input type="text" name="genero" required style="margin-bottom: 10px;"><br>
+        <label for="numero_camiseta" style="display: block;">Número de Camiseta:</label>
+        <input type="number" name="numero_camiseta" required style="margin-bottom: 10px;"><br>
+        <label for="deporte" style="display: block;">Deporte:</label>
+        <input type="text" name="deporte" required style="margin-bottom: 10px;"><br>
+        <label for="posicion" style="display: block;">Posición:</label>
+        <input type="text" name="posicion" required style="margin-bottom: 10px;"><br>
+        <button type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; cursor: pointer;">Guardar</button>
+    </form>
+</body>
+</html>

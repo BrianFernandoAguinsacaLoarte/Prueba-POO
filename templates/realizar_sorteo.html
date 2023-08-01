@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Realizar Sorteo</title>
+</head>
+<body>
+    <h1>Realizar Sorteo</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="fecha_sorteo">Fecha del Sorteo:</label>
+        <input type="date" name="fecha_sorteo" required><br>
+        <button type="submit">Guardar</button>
+    </form>
+    <h2>Sorteos realizados:</h2>
+    <ul>
+        {% for sorteo in sorteos %}
+        <li>{{ sorteo.fecha }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
