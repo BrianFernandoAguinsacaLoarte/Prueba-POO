@@ -1,0 +1,29 @@
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 20px;
+    padding: 20px;
+}
+
+/* Estilos para el encabezado (h1) */
+h1 {
+    color: #0066cc;
+}
+
+/* Estilos para el párrafo (p) */
+p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Estilos para el enlace (a) */
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
