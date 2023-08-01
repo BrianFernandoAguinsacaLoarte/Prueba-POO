@@ -1,7 +1,8 @@
 
-                                                                  HORARIOS 
+                                                       HORARIOS 
                       
-                    
+  ![WhatsApp Image 2023-07-31 at 21 33 59 (1)](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/89973e3f-6ddf-4e79-aac7-e7965a37d765)
+
 
 
                                               
