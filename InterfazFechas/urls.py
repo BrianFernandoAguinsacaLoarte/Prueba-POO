@@ -19,10 +19,10 @@ from django.urls import path
 from Calendario import views
 
 urlpatterns = [
-    path('IngresarJugador', views.ingresar_jugador, name='home'),
+    path('IngresarJugador', views.ingresar_jugador, name='home'), 
     path('admin/', views.definir_equipo, name='admin'),
-    path('equipos/', views.realizar_sorteo, name='lista_equipos'),
-    path('eliminar-equipo/<int:equipo_id>/', views.eliminar_equipo, name='eliminar_equipo'),
+    path('equipos/', views.realizar_sorteo, name='lista_equipos'), 
+    path('eliminar-equipo/<int:equipo_id>/', views.eliminar_equipo, name='eliminar_equipo'), # Eliminar equipo de la lista de equipos
     path('programar_partidos/', views.programar_partidos, name='programar_partidos'),
 
 
