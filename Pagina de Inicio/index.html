@@ -3,118 +3,594 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Compentencias UNL</title>
     <link rel="stylesheet" href="css/estilos.css">
-</head>
-<header>
-    <nav>
-        <a class="nav1" href="#sec1">Inicio</a>
-        <a class="nav1" href="Acercade.html">Acerca de</a>
-        <a class="nav1" href="#sec3">Eventos</a>
-    </nav>
-</header>
-<body>
-    <section id="sec1">
-       <div class="contenedor-texto">
-            <h2>Bienvenido</h2>
-            <p> Bienvenidos a tu página favorita de competencias deportivas UNL </p>
-            <a href="#sec2">Comenzar</a>
-        </div>
-        <img src="https://img.freepik.com/vector-gratis/fondo-campo-futbol-estilo-degradado_23-2148995842.jpg" alt="">
-    </section>
-   
-    <div class="contenedor">
-        <h1 class="h1">Próximos eventos</h1>
-        <div class="carousel-eventos">
-            <div class="evento">
-                <h3 class="h1"><ins>Evento 1</ins></h3>
-                <p>
-                    <a href="#"><img src="img/Argentina-vs-Ecuador-Live.jpg" alt="Jugadores de fútbol"></a>
-                </p>
-                <p>Fecha: 25 de mayo de 2023</p>
-                <p>Lugar: Estadio Principal</p>
-            </div>
-            <div class="evento">
-                <h3 class="h1"><ins>Evento 2</ins></h3>
-                <p>
-                    <a href="#"><img src="img/evento2.jpeg" alt="Descripción del evento 2"></a>
-                </p>
-                <p>Fecha: 10 de junio de 2023</p>
-                <p>Lugar: Estadio Secundario</p>
-            </div>
-            <div class="evento">
-                <h3 class="h1"><ins>Evento 3</ins></h3>
-                <p>
-                    <a href="#"><img src="img/evento3.jpg" alt="Descripción del evento 3"></a>
-                </p>
-                <p>Fecha: 15 de julio de 2023</p>
-                <p>Lugar: Estadio Terciario</p>
-            </div>
-        </div>
-    </div>
-    <br>
-    <h2>Transmición</h2>
-    <lNSN2l-50GI></lNSN2l-50GI>
-    <iframe width="640" height="360" src="https://www.youtube.com/embed/lNSN2l-50GI" frameborder="0" allowfullscreen></iframe>
-
-    <section id="sec2">
-        <a href="#sec1">INICIO</a> <br>
-        <h3>Estadísticas del equipo de fútbol</h3>
-        <table>
-            <tr>
-                <th>Nombre del jugador</th>
-                <th>Goles</th>
-                <th>Asistencias</th>
-                <th>Amarillas</th>
-                <th>Rojas</th>
-            </tr>
-            <tr>
-                <td>Messi</td>
-                <td>12</td>
-                <td>6</td>
-                <td>2</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>El bicho</td>
-                <td>8</td>
-                <td>10</td>
-                <td>3</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>Miguelin</td>
-                <td>8</td>
-                <td>3</td>
-                <td>1</td>
-                <td>1</td>
-            </tr>
-        </table>  
-            
-    </section>
-    <h2>Compartir en redes sociales</h2>
-    <div class="social-buttons">
-        <div class="social-button" onclick="shareFacebook()">Facebook</div>
-        <div class="social-button" onclick="shareTwitter()">Twitter</div>
-        <div class="social-button" onclick="shareLinkedIn()">LinkedIn</div>
-    </div>
-
-    <script>
-        // Reemplaza las URL de ejemplo con las URL reales del contenido que deseas compartir
-
-        function shareFacebook() {
-            window.open('https://www.facebook.com/sharer/sharer.php?u=https://www.ejemplo.com', '_blank');
-        }
-
-        function shareTwitter() {
-            window.open('https://twitter.com/intent/tweet?url=https://www.ejemplo.com&text=¡Echa un vistazo a este contenido!', '_blank');
-        }
-
-        function shareLinkedIn() {
-            window.open('https://www.linkedin.com/shareArticle?url=https://www.ejemplo.com&title=Título%20del%20contenido', '_blank');
-        }
-    </script>
+    <link rel="icon" href="img/LogoUNL.png" />
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>Competencias Deportivas</title>
     
+  </head>
+  <body>
+    <style>
+      *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root{
+  --body-color:#9B27B00D;
+  --sidebar-color:#FFFFFF;
+  --primary-color:#9B27B0;
+  -primary-color-light:#9B27B00D;
+  --toggle-color:#DDDDDD;
+  --text-color:#707070;
+
+  --tran-03: all 0.2s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.4s ease;
+}
+body{
+  min-height: 100vh;
+  background-color: var(--body-color);
+  transition: var(--tran-05);
+}
+::selection{
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+}
+body.dark{
+--body-color: #18191A;
+--sidebar-color: #242526;
+--primary-color-light: #3A3B3C;
+--toggle-color: #FFFFFF;
+--text-color: #CCCCCC;
+}
+.sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 200px;
+  padding: 10px 14px;
+  background: var(--sidebar-color);
+  transition: var(--tran-05);
+  z-index: 100;
+}
+.sidebar.close{
+  width: 88px;
+}
+.sidebar li {
+  height: 50px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.sidebar header .image,
+.sidebar .icon{
+  min-width: 60px;
+  border-radius: 6px;
+}
+.sidebar .icon{
+  min-width: 60px;
+  border-radius: 6px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.sidebar .text,
+.sidebar .icon{
+  color: var(--text-color);
+  transition: var(--tran-03);
+}
+.sidebar .text{
+  font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 1;
+}
+
+.sidebar.close .text{
+  opacity: 0;
+}
+.sidebar header{
+  position: relative;
+}
+.sidebar header .logo{
+  display: flex;
+  flex-direction: column;
+}
+.name{
+  margin-top: 2px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.profe{
+  font-size: 14px;
+  margin-top: -2px;
+  display: block;
+}
+.sidebar header .image{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar header .image img{
+  width: 40px;
+  border-radius: 6px;   
+}
+
+.sidebar header .toggle{
+  position: absolute;
+  top: 20%;
+  right: 0px;
+  height: 35px;
+  width: 35px;
+  background-color: var(--primary-color);
+  color: var(--sidebar-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
+  cursor: pointer;
+  transition:var(--tran-05);   
+}
+
+body.dark .sidebar header .toggle{
+  background-color:var(--text-color);
+}
+.sidebar.close .toggle{
+  width: 100%;
+  top: 20%;
+}
+.sidebar .menu{
+  margin-top: 40px;
+}
+
+.sidebar li.search-box{
+  border-radius: 6px;
+  background-color: var(--primary-color-light);
+  cursor: pointer;
+  transition: var(--tran-05);
+}
+
+.sidebar li.search-box input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: var(--primary-color-light);
+  border-radius: 6px;
+  font-size: 17px;
+  font-weight: 500;
+  transition: var(--tran-05);
+}
+
+.sidebar li a{
+  list-style: none;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: var(--tran-03);
+}
+.sidebar li a:hover{
+  background-color: var(--primary-color);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+  color: var(--sidebar-color);
+}
+
+.sidebar .menu-bar{
+  height: calc(100% - 55px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: scroll;
+}
+
+.menu-bar::-webkit-scrollbar{
+  display: none;
+}
+
+.sidebar .menu-bar .mode {
+  border-radius: 6px;
+  background-color: var(--primary-color-light);
+  position: relative;
+  transition: var(--tran-05);
+}
+
+.menu-bar .mode .sun-moon{
+  height: 50px;
+  width: 60px;
+}
+
+.mode .sun-moon i{
+  position: absolute;
+}
+
+.mode .sun-moon i.sun {
+ opacity: 0;
+}
+
+body.dark .mode .sun-moon i.sun{
+  opacity: 1;
+}
+
+body.dark .mode .sun-moon i.moon{
+  opacity: 0;
+}
+
+.menu-bar .bottom-content .toggle-switch{
+  position: absolute;
+  right: 0;
+  height: 100%;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.toggle-switch .switch{
+  position:relative;
+  height:22px;
+  width:40px;
+  border-radius: 25px;
+  background-color: var(--toggle-color);
+  transition: var(--tran-05);
+}
+  
+.switch::before{
+  content: '';
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  background-color: var(--sidebar-color);
+  transition: var(--tran-04);
+}
+body.dark .switch::before{
+  left: 20px;
+}
+
+.home{
+  position: absolute;
+  top:0;
+  left: 250px;
+  height: 100vh;
+  width: calc(100% - 250px);
+  background-color: var(--body-color);
+  transition: var(--tran-05);
+}
+.home .text{
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 12px 60px;
+}
+
+.sidebar.close ~ .home{
+  left: 78px;
+  height: 100vh;
+  width: calc(100% - 78px);
+}
+
+body.dark .home .text{
+  color: var(--text-color);
+}
+
+.material-symbols-outlined {
+  margin-left: 20px; /* Ajusta este valor según tus necesidades */
+}
+</style>
+    <nav class=" sidebar close">
+      <header>
+          <div class="text logo">
+          <span class="name">Competencia-Unl</span>
+          <span class="profe">Administrador</span>
+          </div>    
+          <i class="bx bx-menu toggle"></i>                                                                                       
+      </header>
+  
+      <div class="menu-bar">
+          <div class="menu">
+              <li class="search-box">
+                  <i class="bx bx-search icon"></i> 
+                  <input type="text" placeholder="Buscar...">
+              </li>
+              
+              <ul class="menu-links">
+              <li class="nav-link">
+                  <a href="#">
+                      <i class="bx bx-home-alt icon"></i>
+                      <span class="text nav-text">Inicio</span>
+                  </a>
+              </li>
+              <li class="nav-link">
+                  <a href="#">
+                      <i class="material-symbols-outlined">calendar_month</i>
+                      <span class="text nav-text">Calendario</span>
+                  </a>
+              </li> 
+              <li class="nav-link">
+                  <a href="#">
+                      <i class="bx bx-bell icon"></i>
+                      <span class="text nav-text">Equipos</span>
+                  </a>
+              </li> 
+              <li class="nav-link">
+                  <a href="#">
+                      <i class="bx bx-bar-chart-alt-2 icon"></i>
+                      <span class="text nav-text">Partidos</span>
+                  </a>
+              </li> 
+              <li class="nav-link">
+                  <a href="#">
+                      <i class="bx bx-bar-chart-alt-2 icon"></i>
+                      <span class="text nav-text">InscrbirEquipo</span>
+                  </a>
+              </li>     
+              </ul>
+          </div> 
+  
+          <div class="bottom-content">
+              <li class="">
+                  <a href="#">
+                      <i class="bx bx-log-out icon"></i>
+                      <span class="text nav-text">Cerrar Sesion</span>
+                  </a>
+              </li>
+              <li class="mode">
+                  <div class="sun-moon">
+                  <i class="bx bx-moon icon moon"></i>
+                  <i class="bx bx-sun icon sun"></i>
+                  </div>
+                  <span class="mode-text text">Modo Oscuro</span>
+                  <div class="toggle-switch">
+                      <span class="switch"></span>
+                  </div>
+              </li>
+          </div>
+      </div>
+  </nav>
+  <script>
+    const body = document.querySelector('body');
+        sidebar = body.querySelector('nav');
+        toggle = body.querySelector('.toggle');
+        searchBtn = body.querySelector('.search-box');
+        modoSwitch = body.querySelector('.toggle-switch');
+        modeText = body.querySelector('.mode-text');
+
+        toggle.addEventListener('click', () => {
+            sidebar.classList.toggle('close');
+        })
+
+        searchBtn.addEventListener('click', () => {
+            sidebar.classList.remove('close');
+        })
+
+        modoSwitch.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            if (body.classList.contains('dark')) {
+                modeText.innerText = "Light Mode";
+            } else {
+                modeText.innerText = "Dark Mode";
+            }
+        })
+  </script>
+      
+    <a href="#main-content" class="scroll-down-btn"><i class="fas fa-chevron-down"></i> Inicio</a>
+
+    <header>
+      <div class="contenedor">
+        <div class="header">
+          <h3 class="LogoTipo">Competencia-Unl</h3>
+        </div>
+          <nav>
+              <ul>
+                  <li><a href="#">Inicio</a></li>
+                  <li><a href="calendario.html">Calendario</a></li>
+                  <li><a href="resultados.html">Resultados</a></li>
+                  <li id="menu-padre"><a href="partido.html">Partidos</a>
+                    <ul id="menu-desplegable">
+                        <li><a href="equipo.html">Equipos</a></li>
+                        <li><a href="añadirequipo.html">InscribirEquipo</a></li>
+                    </ul>
+                 
+                  <li id="menu-padre"><a href="#">Competencias</a>
+                      <ul id="menu-desplegable">
+                          <li><a href="Grupal.html">Futbol</a></li>
+                          <li><a href="#">Pin Pon</a></li>
+                      </ul>
+                  </li>
+                  <li>
+                    <div class="idioma" data-href="english.html" onclick="window.location.href = this.dataset.href;">
+                        <p>ES</p>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </div>
+                </li>
+                  <li>
+                      <div class="buscador">
+                          <p>Buscar</p>
+                          <span class="material-symbols-outlined">search</span>
+                      </div>
+                  </li>
+                  <li>
+                    <div class="cuenta" data-href="formulario.html" onclick="window.location.href = this.dataset.href;">
+                      <span class="material-symbols-outlined" id="icon">account_circle</span>
+                    </div>
+                  </li>
+              </ul>
+          </nav>
+      </div>
+  </header>
+  
+    <main id="main-content"></main>
+       <div class="deporte-principal">
+        <div class="contenedor">
+            <h3 class="titulo">Competencias Deportivas</h3>
+            <p class="descripcion">
+                "La competencia deportiva es un emocionante evento que reúne a atletas de diversas disciplinas y habilidades, que se enfrentan en una serie de desafíos físicos para demostrar su destreza, resistencia y espíritu competitivo. Este evento de alto nivel atrae a deportistas de élite, quienes entrenan arduamente para alcanzar su máximo rendimiento y superar sus propios límites.
+
+            </p>
+            <button role="button" class="boton"><i class="fas fa-play"></i>Iniciar</button>
+            <button role="button" class="boton"><i class="fas fa-info-circle"></i>Informacion</button>
+        </div>
+       </div> 
+      
+      <div class="eventos-deportivos contenedor">
+        <div class="contenedor-titulo-controles">
+            <h3 class="titulo"><ins>Eventos Deportivos</ins></h3>
+            <div class="indicadores"></div>
+        </div>
+        <!-- -----------------------Carrusel---------------------------------------------------- -->
+        <div class="contenedor-principal">
+        <button role="button" id="flecha-izquierda" class="flecha-izquierda"><i class="fas fa-angle-left"></i></button>
+        <div class="contenedor-carousel">
+            <div class="carousel">
+                <div class="deporte">
+                    <a href="#"><img src="img/Futbol.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/-baloncesto-en-alta.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/voly.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/descarga.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/1593471122_296.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/voly2.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/futbol1.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/1593471132_34.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/voly3.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                <a href="#"><img src="img/1DA.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                <a href="#"><img src="img/basqueet2.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/voly4.jpg" alt=""></a>
+                </div>
+            </div>
+        </div>
+
+        <button role="button" id="flecha-derecha" class="flecha-derecha"><i class="fas fa-angle-right"></i></button>
+                
+        </div>
+        </div>
+    </main>
+    <section class="deporte">
+      <div class="contenedor">
+          <h2>Próximos eventos</h2>
+          <div class="carousel-eventos">
+              <div class="evento">
+                  <h3 class="titulo"><ins>Evento 1</ins></h3>
+                  <p class="descripcion">
+                      <a href="#"><img src="img/Argentina-vs-Ecuador-Live.jpg" width="500px" height="250" alt="Jugadores de fútbol"></a>
+                  </p>
+                  <p>Fecha: 25 de mayo de 2023</p>
+                  <p>Lugar: Estadio Principal</p>
+              </div>
+              <div class="evento">
+                  <h3 class="titulo"><ins>Evento 2</ins></h3>
+                  <p class="descripcion">
+                      <a href="#"><img src="img/evento2.jpeg" width="500px" height="250" alt="Descripción del evento 2"></a>
+                  </p>
+                  <p>Fecha: 10 de junio de 2023</p>
+                  <p>Lugar: Estadio Secundario</p>
+              </div>
+              <div class="evento">
+                  <h3 class="titulo"><ins>Evento 3</ins></h3>
+                  <p class="descripcion">
+                      <a href="#"><img src="img/evento3.jpg" width="500px" height="250" alt="Descripción del evento 3"></a>
+                  </p>
+                  <p>Fecha: 15 de julio de 2023</p>
+                  <p>Lugar: Estadio Terciario</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <hr class="separador">
+
+  <section class="autor1">
+      <div class="contenedor-autor">
+        <h3 class="titulo">Autores:</h3>
+        <div class="autor">
+          <a href="https://github.com/Estefania12-torres" target="_blank"><img src="img/img_Estefania.jpg" alt=""></a>
+          <div class="contenido-texto-autor">
+            <h4>Estefani Torres</h4>
+          </div>
+        </div>
+        <div class="autor">
+          <a href="https://github.com/Miguelin04" target="_blank"><img src="img/yo.jpg" alt=""></a>
+          <div class="contenido-texto-autor">
+          <h4> Miguel Luna</h4>
+          </div>
+        </div>
+        <div class="autor">
+          <a href="https://github.com/BrianFernandoAguinsacaLoarte" target="_blank"><img src="img/img_Brian.jpg" alt=""></a>
+          <div class="contenido-texto-autor">
+            <h4>Brian Aguinsaca</h4>
+          </div>
+        </div>
+        <div class="autor">
+          <a href="https://github.com/Abel214" target="_blank"><img src="img/img_Abel.jpg" alt=""></a>
+          <div class="contenido-texto-autor">
+            <h4>Abel Mora</h4>
+          </div>
+        </div>
+        <div class="autor">
+          <a href="https://github.com/DarwinSarango" target="_blank"><img src="img/img_Darwin.jpg" alt=""></a>
+          <div class="contenido-texto-autor">
+            <h4>Darwin Sarango</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div>
+        <h1 class="repositorio-link">
+          <a href="https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO.git" target="_blank">Repositorio del Proyecto</a>
+        </h1>
+      </div>
+    </section>
+    <footer>
+      <p>Derechos de autor &copy; 2023. Todos los derechos reservados.</p>
+  </footer>
+   <hr class="separador">           
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <script src="main/main.js"></script>
+    <script src="scripts/welcome-animation.js"></script>
 </body>
 </html>
