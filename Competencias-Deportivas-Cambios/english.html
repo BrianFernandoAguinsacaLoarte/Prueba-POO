@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" href="img/LogoUNL.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>Sports Competitions</title>
+    
+  </head>
+  <body>
+    <a href="#main-content" class="scroll-down-btn"><i class="fas fa-chevron-down"></i> Inicio</a>
+
+    <header>
+      <div class="contenedor">
+          <h3 class="LogoTipo">Competition-Unl</h3>
+          <nav>
+              <ul>
+                  <li><a href="#">Start</a></li>
+                  <li><a href="calendar.html">Calendar</a></li>
+                  <li><a href="results.html">Results</a></li>
+                  <li><a href="equipo.html">Matches</a></li>
+                  <li><a href="register.html">Register Your Team</a></li>
+                  <li id="menu-padre"><a href="#">Competitions</a>
+                      <ul id="menu-desplegable">
+                          <li><a href="Grupal.html">Group</a></li>
+                          <li><a href="#">Individual</a></li>
+                      </ul>
+                  </li>
+                  <li>
+                    <div class="idioma" data-href="index.html" onclick="window.location.href = this.dataset.href;">
+                        <p>EN</p>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </div>
+                </li>
+                  <li>
+                      <div class="buscador">
+                          <p>Search</p>
+                          <span class="material-symbols-outlined">search</span>
+                      </div>
+                  </li>
+                  <li>
+                    <div class="cuenta" data-href="login.html" onclick="window.location.href = this.dataset.href;">
+                      <span class="material-symbols-outlined" id="icon">account_circle</span>
+                    </div>
+                  </li>
+              </ul>
+          </nav>
+      </div>
+  </header>
+  
+    <main id="main-content"></main>
+       <div class="deporte-principal">
+        <div class="contenedor">
+            <h3 class="titulo">Sports Competitions</h3>
+            <p class="descripcion">
+              "Sports competition is an exciting event that brings together athletes from various disciplines and abilities, who face off in a series of physical challenges to demonstrate their skill, endurance, and competitive spirit. This high-level event attracts elite athletes, who train hard to reach their peak performance and surpass their own limits.
+
+            </p>
+            <button role="button" class="boton"><i class="fas fa-play"></i>Iniciar</button>
+            <button role="button" class="boton"><i class="fas fa-info-circle"></i>Informacion</button>
+        </div>
+       </div> 
+      
+      <div class="eventos-deportivos contenedor">
+        <div class="contenedor-titulo-controles">
+            <h3 class="titulo"><ins>Sports Events</ins></h3>
+            <div class="indicadores"></div>
+        </div>
+        <!-- -----------------------Carrusel---------------------------------------------------- -->
+        <div class="contenedor-principal">
+        <button role="button" id="flecha-izquierda" class="flecha-izquierda"><i class="fas fa-angle-left"></i></button>
+        <div class="contenedor-carousel">
+            <div class="carousel">
+                <div class="deporte">
+                    <a href="#"><img src="img/Futbol.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/-baloncesto-en-alta.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/voly.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/descarga.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/1593471122_296.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/voly2.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/futbol1.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/1593471132_34.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/voly3.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                <a href="#"><img src="img/1DA.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                <a href="#"><img src="img/basqueet2.jpg" alt=""></a>
+                </div>
+                <div class="deporte">
+                    <a href="#"><img src="img/voly4.jpg" alt=""></a>
+                </div>
+            </div>
+        </div>
+
+        <button role="button" id="flecha-derecha" class="flecha-derecha"><i class="fas fa-angle-right"></i></button>
+                
+        </div>
+        </div>
+    </main>
+    <section class="deporte">
+      <div class="contenedor">
+          <h2>Upcoming events</h2>
+          <div class="carousel-eventos">
+              <div class="evento">
+                  <h3 class="titulo"><ins>Event 1</ins></h3>
+                  <p class="descripcion">
+                      <a href="#"><img src="img/Argentina-vs-Ecuador-Live.jpg" width="500px" height="250" alt="Jugadores de fútbol"></a>
+                  </p>
+                  <p>Date: May 25, 2023</p>
+                  <p>Location: Main Stadiuml</p>
+              </div>
+              <div class="evento">
+                  <h3 class="titulo"><ins>Event 2</ins></h3>
+                  <p class="descripcion">
+                      <a href="#"><img src="img/evento2.jpeg" width="500px" height="250" alt="Descripción del evento 2"></a>
+                  </p>
+                  <p>Date: June 10, 2023</p>
+                  <p>Location: Secondary Stadium</p>
+              </div>
+              <div class="evento">
+                  <h3 class="titulo"><ins>Event 3</ins></h3>
+                  <p class="descripcion">
+                      <a href="#"><img src="img/evento3.jpg" width="500px" height="250" alt="Descripción del evento 3"></a>
+                  </p>
+                  <p>Date: July 15, 2023</p>
+                <p>Location: Tertiary Stadium</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <hr class="separador">
+
+  <section class="autor1">
+      <div class="contenedor-autor">
+        <h3 class="titulo">Authors:</h3>
+        <div class="autor">
+          <a href="https://github.com/Estefania12-torres" target="_blank"><img src="img/img_Estefania.jpg" alt=""></a>
+          <div class="contenido-texto-autor">
+            <h4>Estefani Torres</h4>
+          </div>
+        </div>
+        <div class="autor">
+          <a href="https://github.com/Miguelin04" target="_blank"><img src="img/yo.jpg" alt=""></a>
+          <div class="contenido-texto-autor">
+          <h4> Miguel Luna</h4>
+          </div>
+        </div>
+        <div class="autor">
+          <a href="https://github.com/BrianFernandoAguinsacaLoarte" target="_blank"><img src="img/img_Brian.jpg" alt=""></a>
+          <div class="contenido-texto-autor">
+            <h4>Brian Aguinsaca</h4>
+          </div>
+        </div>
+        <div class="autor">
+          <a href="https://github.com/Abel214" target="_blank"><img src="img/img_Abel.jpg" alt=""></a>
+          <div class="contenido-texto-autor">
+            <h4>Abel Mora</h4>
+          </div>
+        </div>
+        <div class="autor">
+          <a href="https://github.com/DarwinSarango" target="_blank"><img src="img/img_Darwin.jpg" alt=""></a>
+          <div class="contenido-texto-autor">
+            <h4>Darwin Sarango</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div>
+        <h1 class="repositorio-link">
+          <a href="https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO.git" target="_blank">Project Repository</a>
+        </h1>
+      </div>
+    </section>
+    <footer>
+      <p>Derechos de autor &copy; 2023. Todos los derechos reservados.</p>
+  </footer>
+   <hr class="separador">           
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <script src="main/main.js"></script>
+    <script src="scripts/welcome-animation.js"></script>
+</body>
+</html>
