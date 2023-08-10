@@ -1,7 +1,8 @@
 
                                                                    UNL FÚTBOL PLAY 
                     
-   ![73774](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/133794609/ae235a3f-2a71-4d55-b6c6-95e8d252fcc6)
+  ![image](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/6f451f7e-a1d3-447c-a3bc-e1c100745571)
+
 
                                               
 Integrantes:
@@ -19,8 +20,9 @@ Integrantes:
 Imágenes del proyecto
   
   UML
-  
-  ![Uml](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/133794609/cf984d97-3743-4123-ad25-5d87b3fcd21e)
+  ![umlNew drawio (1)](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/a9eb638f-42d3-43da-9af7-a12e0fe07ace)
+
+ 
  Gestión del proyecto del GitKraken
  
  ![GitKraken](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/133794609/701772b3-8657-4a64-9192-9dde0835f2de)
