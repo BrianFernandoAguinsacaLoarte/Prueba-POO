@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ titulo }}
+{% endblock %}
+
+{% block contenido %}
+
+    <h1>{{ contenido1 }}</h1>
+    <h2>Crear equipos</h2>
+    <body>
+        <form id="team-form">
+
+            <label for="team-name">Nombre del equipo:</label>
+            <input type="text" id="team-name" required>
+            <button type="button" onclick="addTeam()">Agregar equipo</button>
+        </form>
+
+    <h2>Equipos registrados</h2>
+    <ul id="team-list"></ul>
+
+    <button type="button" onclick="drawGroups()">Sortear equipos y generar grupos</button>
+
+    <h2>Equipos agrupados</h2>
+    <div id="groups-container"></div>
+
+    <h2>Enfrentamientos</h2>
+    <table id="matches-table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Lugar</th>
+                <th>Equipo Local</th>
+                <th>Equipo Visitante</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+        <script>
+    let teams = [];
+
+    function addTeam() {
+        const teamName = document.getElementById('team-name').value;
+        teams.push(teamName);
+        document.getElementById('team-list').innerHTML += `<li>${teamName}</li>`;
+        document.getElementById('team-name').value = '';
+    }
+
+    function drawGroups() {
+        shuffleTeams();
+        const groupA = teams.slice(0, Math.ceil(teams.length / 2));
+        const groupB = teams.slice(Math.ceil(teams.length / 2));
+
+        const groupsContainer = document.getElementById('groups-container');
+        groupsContainer.innerHTML = `
+            <h3>Grupo A</h3>
+            <ul>${groupA.map(team => `<li>${team}</li>`).join('')}</ul>
+            <h3>Grupo B</h3>
+            <ul>${groupB.map(team => `<li>${team}</li>`).join('')}</ul>
+        `;
+
+        generateMatches(groupA, groupB);
+    }
+
+    function generateMatches(groupA, groupB) {
+        const matchesTable = document.getElementById('matches-table').getElementsByTagName('tbody')[0];
+        matchesTable.innerHTML = '';
+        let dateCounter = 1;
+        for (let i = 0; i < groupA.length; i++) {
+            for (let j = 0; j < groupB.length; j++) {
+                const date = generateRandomDate(dateCounter);
+                const time = generateRandomTime();
+                const location = generateRandomLocation();
+
+                matchesTable.innerHTML += `
+                    <tr>
+                        <td>${date}</td>
+                        <td>${time}</td>
+                        <td>${location}</td>
+                        <td>${groupA[i]}</td>
+                        <td>${groupB[j]}</td>
+                    </tr>
+                `;
+
+                dateCounter++;
+            }
+        }
+    }
+
+    function generateRandomDate(dateCounter) {
+        const millisecondsPerDay = 24 * 60 * 60 * 1000;
+        const startDate = new Date(); // Fecha actual
+        startDate.setDate(startDate.getDate() + (dateCounter - 1) * 7);
+        const endDate = new Date(startDate.getTime() + 6 * millisecondsPerDay);
+        const startDateString = startDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' });
+        const endDateString = endDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'long' });
+        return `${startDateString} al ${endDateString}`;
+    }
+
+    function generateRandomTime() {
+        const hours = Math.floor(Math.random() * 24);
+        const minutes = Math.floor(Math.random() * 60).toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+    }
+
+    function generateRandomLocation() {
+        const locations = ['Parque Lineal', 'Coliseo Universidad de Loja', 'La Pampita', 'Estadio Reina del Cisne'];
+        const randomIndex = Math.floor(Math.random() * locations.length);
+        return locations[randomIndex];
+    }
+
+    function shuffleTeams() {
+
+    }
+    </script>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <form class="formSorteo" id="registrationForm" action="#" method="post">
+        {% csrf_token %}
+ <button type="submit" id="GrupoButton">Ir a Grupos</button>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from being submitted
+
+            // Use JavaScript to set the form's action attribute dynamically
+            var grupoUrl = '{% url "Grupo" %}';
+            document.getElementById('registrationForm').setAttribute('action', grupoUrl);
+
+            // Submit the form after setting the action
+            this.submit();
+        });
+      </script>
+
+    </form>
+    </body>
+
+
+{% endblock %}
