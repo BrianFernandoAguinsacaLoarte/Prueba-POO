@@ -8,6 +8,7 @@ public class Grupo {
     private static final int LIMITE_EQUIPOS = 4;
 
 
+
     public Grupo() {
             this.nombre = "Grupo ";
     }
@@ -51,7 +52,15 @@ public class Grupo {
             String[] equiposPartido = nombrePartido.split(" Vs ");
             String equipoLocal = equiposPartido[0];
             String equipoVisitante = equiposPartido[1];
-            Partido partido = new Partido(equipoLocal, equipoVisitante, Partido.generarNombreAleatorio());
+            String nombrePartidoAleatorio = Partido.generarNombreAleatorio();
+            Fecha fechaAleatoria = Fecha.generarFechaAleatoria(2023, 2023, 8, 31); // Ajusta los valores según tus necesidades
+            Tiempo tiempoAleatorio = Tiempo.generarTiempoAleatorio();
+
+            Partido partido = new Partido(equipoLocal, equipoVisitante, nombrePartidoAleatorio);
+            partido.fecha = fechaAleatoria;
+            partido.tiempo = tiempoAleatorio;
+            partido.estado = EstadoPartido.generarEstadoPartido();
+
             partidos.add(partido);
         }
 
@@ -59,5 +68,9 @@ public class Grupo {
     }
 
 
+
+
+
 }
+
 
