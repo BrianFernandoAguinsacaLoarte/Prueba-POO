@@ -2,6 +2,8 @@
                                                                    UNL FÚTBOL PLAY 
                     
   ![image](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/6f451f7e-a1d3-447c-a3bc-e1c100745571)
+  ![image](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/016c81ef-c3d4-4862-8275-2ceebd9cb3b2)
+
 
 
                                               
