@@ -25,14 +25,16 @@ public class Marcador {
 
     public static Marcador generarMarcadorAleatorio() {
         Random random = new Random();
-        int golesEquipoLocal = random.nextInt(6);    // Goles entre 0 y 5
-        int golesEquipoVisitante = random.nextInt(6); // Goles entre 0 y 5
+        int golesEquipoLocal = random.nextInt(6) + 1;    // Goles entre 1 y 5
+        int golesEquipoVisitante = random.nextInt(6) + 1; // Goles entre 1 y 5
         return new Marcador(golesEquipoLocal, golesEquipoVisitante);
     }
+
 
     @Override
     public String toString() {
         return golesEquipoLocal + " - " + golesEquipoVisitante;
     }
 }
+
 
