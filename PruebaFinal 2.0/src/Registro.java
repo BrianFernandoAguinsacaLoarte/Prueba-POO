@@ -136,9 +136,21 @@ public class Registro {
                     List<Partido> partidos = grupo.generarPartidos();
                     System.out.println("Los Partidos se definirán muy pronto.....");
                     for (Partido partido : partidos) {
-                        System.out.println("- " + partido.getEquipoLocal() + " vs " + partido.getEquipoVisitante()
-                                + " (" + partido.getNombrePartido() + ") estado: " + partido.getEstado());
+                        System.out.println("El partido iniciará a las " + partido.getTiempo() +
+                                " el día " + partido.getFecha());
+                        System.out.println("- " + partido.getEquipoLocal() + " vs " + partido.getEquipoVisitante() +
+                                " (" + partido.getNombrePartido() + ") estado: " + partido.getEstado());
 
+                        if (partido.getEstado() == EstadoPartido.Iniciado) {
+                            System.out.println(Sorteo.realizarSorteo(partido));
+                        } else if (partido.getEstado() == EstadoPartido.Entretiempo) {
+                            System.out.println("El partido se encuentra en entretiempo.");
+                            Marcador marcador = Marcador.generarMarcadorAleatorio();
+                            System.out.println("Marcador: " + marcador); // Mostrar el marcador generado
+                        } else if (partido.getEstado() == EstadoPartido.Finalizado) {
+                            Marcador marcadorFinal = Marcador.generarMarcadorAleatorio();
+                            System.out.println("Marcador final: " + marcadorFinal); // Mostrar el marcador final generado
+                        }
                     }
                 }
             }
