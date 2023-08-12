@@ -1,47 +1,55 @@
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-public class Partido {
-    private Equipo equipoLocal;
-    private Equipo equipoVisitante;
-    private EstadoPartido estadoPartido;
 
-    public Equipo getEquipoLocal() {
+public class Partido {
+    private String equipoLocal;
+    private String equipoVisitante;
+    private String nombrePartido;
+    private EstadoPartido estado;
+
+    public EstadoPartido getEstado() {
+        return estado;
+    }
+
+    public Partido(String equipoLocal, String equipoVisitante, String nombrePartido) {
+        this.equipoLocal = equipoLocal;
+        this.equipoVisitante = equipoVisitante;
+        this.nombrePartido = nombrePartido;
+        this.estado = EstadoPartido.generarEstadoPartido();
+    }
+
+    public String getEquipoLocal() {
         return equipoLocal;
     }
 
-    public void setEquipoLocal(Equipo equipoLocal) {
-        this.equipoLocal = equipoLocal;
-    }
-
-    public Equipo getEquipoVisitante() {
+    public String getEquipoVisitante() {
         return equipoVisitante;
     }
 
-    public void setEquipoVisitante(Equipo equipoVisitante) {
-        this.equipoVisitante = equipoVisitante;
+    public String getNombrePartido() {
+        return nombrePartido;
     }
 
-    public EstadoPartido getEstadoPartido() {
-        return estadoPartido;
-    }
+    public static List<String> generarPartidosAleatorios(List<String> equipos) {
+        List<String> partidos = new ArrayList<>();
 
-    public void setEstadoPartido(EstadoPartido estado) {
-        this.estadoPartido = estado;
-    }
+        for (int i = 0; i < equipos.size(); i++) {
+            for (int j = i + 1; j < equipos.size(); j++) {
+                String partido = equipos.get(i) + " Vs " + equipos.get(j);
+                partidos.add(partido);
+            }
+        }
 
-    public Partido(Equipo equipoLocal, Equipo equipoVisitante) {
-        this.equipoLocal = equipoLocal;
-        this.equipoVisitante = equipoVisitante;
-        this.estadoPartido = EstadoPartido.Iniciado; // Por defecto, el partido se crea con estado "Aplazado"
+        return partidos;
     }
-    public Partido() {
-
-    }
-
-    // Método para generar un nombre aleatorio para el partido
-    public String generarNombreAleatorio() {
-        String[] nombres = {"Partido Amistoso", "Partido Normal", "Encuentro Épico", "Choque de Titanes", "Duelo Legendario", "Partido del Siglo", "Enfrentamiento Estelar"};
-        Random random = new Random();
-        return nombres[random.nextInt(nombres.length)];
+    public static String generarNombreAleatorio() {
+        String[] nombresPartidos = {"Partido Amistoso", "Partido Normal", "Encuentro Épico", "Choque de Titanes", "Duelo Legendario", "Partido del Siglo", "Enfrentamiento Estelar"};
+        return nombresPartidos[new Random().nextInt(nombresPartidos.length)];
     }
 }
+
+
+
+
