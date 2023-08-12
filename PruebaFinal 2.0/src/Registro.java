@@ -4,19 +4,13 @@ import java.util.Scanner;
 import java.awt.Toolkit;
 
 public class Registro {
+    private List<Equipo> equiposInscritos = new ArrayList<>();
+    private List<Grupo> grupos = new ArrayList<>();
     private List<Usuario> usuarios;
-    private List<Equipo> equiposInscritos;
-    private List<Grupo> grupos;
-    private List<Partido> partidos;
-    private int capacidadMaximaDelGrupo;
+    private Grupo grupo;
 
     public Registro() {
         usuarios = new ArrayList<>();
-        equiposInscritos = new ArrayList<>();
-        grupos = new ArrayList<>();
-        partidos = new ArrayList<>();
-        capacidadMaximaDelGrupo = 4;
-
     }
 
     public void agregarUsuario(Usuario usuario) {
@@ -31,7 +25,6 @@ public class Registro {
         }
         return false;
     }
-
     public void realizarRegistro(Scanner scanner) {
         boolean seguirRegistrando = true;
         while (seguirRegistrando) {
@@ -52,35 +45,15 @@ public class Registro {
                             jugador.getNumeroDeCamiseta(), jugador.getPosicion());
 
                     EstadoInscripcion estado = inscripcion.getEstado();
-                    if (estado == EstadoInscripcion.Registrado){
+                    if (estado == EstadoInscripcion.Registrado) {
                         System.out.println("¡Jugador inscrito correctamente!");
                     } else {
                         System.out.println("Jugador no inscrito. Revise los datos ingresados, por favor.");
                     }
                     break;
                 case DIRECTOR_TECNICO:
-                    crearEquipos(scanner);
-
-                    if (equiposInscritos.size() >= 2) {
-                        Grupo nuevoGrupo = new Grupo("Grupo único", capacidadMaximaDelGrupo, equiposInscritos);
-                        nuevoGrupo.generarPartidosYCrearGrupos(grupos);
-
-                        System.out.println("En unos momentos se definirán los partidos.");
-                        System.out.println("Equipo Local: " + nuevoGrupo.getEquipoLocal().getNombre());
-                        System.out.println("Equipo Visitante: " + nuevoGrupo.getEquipoVisitante().getNombre());
-
-                        if (!nuevoGrupo.getListaPartidos().isEmpty()) {
-                            Partido primerPartido = nuevoGrupo.getListaPartidos().get(0);
-                            System.out.println("Nombre de partido: " + primerPartido.generarNombreAleatorio());
-                            System.out.println("Estado partido: " + primerPartido.getEstadoPartido());
-                        }
-                    } else {
-                        System.out.println("Se necesitan al menos 2 equipos para definir los equipos locales y visitantes.");
-                        System.out.println("En unos momentos se definirán los partidos.");
-                    }
+                    realizarRegistroEquipos(scanner);
                     break;
-
-
                 case ARBITRO:
                     System.out.println("Usted ha elegido el rol de Árbitro.");
                     break;
@@ -92,43 +65,83 @@ public class Registro {
             System.out.println("¿Desea ingresar otro rol? (Si/No):");
             String respuesta = scanner.nextLine();
             if (!respuesta.equalsIgnoreCase("Si")) {
-                seguirRegistrando = false; // Terminar el registro si la respuesta no es "Si"
+                seguirRegistrando = false;
                 System.out.println("Registro finalizado.");
             }
         }
     }
 
+    private void realizarRegistroEquipos(Scanner scanner) {
+        boolean seguirInscribiendoEquipos = true;
+        List<Grupo> grupos = new ArrayList<>();
+        Grupo grupoActual = null; // Inicializa grupoActual como null
 
-    private void crearEquipos(Scanner scanner) {
-        ArrayList<Equipo> equiposInscritosTemporal = new ArrayList<>();
-
-        boolean deseaIngresarOtroEquipo = true;
-        while (deseaIngresarOtroEquipo) {
+        while (seguirInscribiendoEquipos) {
+            grupoActual = new Grupo();
             Equipo equipo = new Equipo();
+            grupo = grupoActual;
             equipo.escogerDeporte(scanner, new EscogerDeporte());
             equipo.registrarInfoEquipo(scanner);
-
+            System.out.println("Registro en proceso. Espere un momento...");
+            Toolkit.getDefaultToolkit().beep();
             Inscripcion inscripcionEquipo = new Inscripcion();
             inscripcionEquipo.validarInscripcionDelEquipo(equipo);
-            EstadoInscripcion estadoEquipo = equipo.getEstadoInscripcion();
 
+            EstadoInscripcion estadoEquipo = equipo.getEstadoInscripcion();
             if (estadoEquipo == EstadoInscripcion.Registrado) {
                 System.out.println("¡Equipo inscrito correctamente!");
-                equiposInscritosTemporal.add(equipo);
+                equiposInscritos.add(equipo);
+                grupoActual.agregarEquipo(equipo.getNombre());
             } else {
-                System.out.println("Equipo no inscrito. Revise los datos ingresados, por favor. Recuerde que un equipo es conformado por más de dos jugadores.");
+                System.out.println("Equipo no inscrito. Revise los datos ingresados, por favor.");
             }
 
             System.out.println("¿Desea ingresar otro equipo? (Si/No):");
             String respuesta = scanner.nextLine();
-            deseaIngresarOtroEquipo = respuesta.equalsIgnoreCase("Si");
+            if (!respuesta.equalsIgnoreCase("Si")) {
+                seguirInscribiendoEquipos = false;
+                System.out.println("Registro de equipos finalizado.");
+
+                // Agregar el último grupo si no está lleno
+                if (!grupoActual.getEquiposEnGrupo().isEmpty()) {
+                    grupos.add(grupoActual);
+                }
+
+                System.out.println("Equipos ingresados:");
+                for (Equipo equipoInscrito : equiposInscritos) {
+                    System.out.println("- " + equipoInscrito.getNombre());
+                }
+
+                // Generar y mostrar los grupos
+                System.out.println("En unos momentos se definirán los grupos. Espere un momento...");
+                List<String> nombresEquipos = new ArrayList<>();
+                for (Equipo equipoInscrito : equiposInscritos) {
+                    nombresEquipos.add(equipoInscrito.getNombre());
+                }
+
+                String[] arrayNombresEquipos = nombresEquipos.toArray(new String[nombresEquipos.size()]);
+                List<Grupo> gruposDefinidos = Grupo.definirGrupos(arrayNombresEquipos);
+                int contadorGrupos = 1;
+
+                for (Grupo grupo : gruposDefinidos) {
+                    List<String> equiposEnGrupo = grupo.getEquiposEnGrupo();
+                    if (!equiposEnGrupo.isEmpty()) {
+                        System.out.println("Grupo " + contadorGrupos + ":");
+                        contadorGrupos++;
+                        for (String nombreEquipo : equiposEnGrupo) {
+                            System.out.println("- " + nombreEquipo);
+                        }
+                    }
+
+                    List<Partido> partidos = grupo.generarPartidos();
+                    System.out.println("Los Partidos se definirán muy pronto.....");
+                    for (Partido partido : partidos) {
+                        System.out.println("- " + partido.getEquipoLocal() + " vs " + partido.getEquipoVisitante()
+                                + " (" + partido.getNombrePartido() + ") estado: " + partido.getEstado());
+
+                    }
+                }
+            }
         }
-
-        // Una vez que termina el bucle, continuar con la generación de grupos y partidos
-
     }
-
-
-
-
 }
