@@ -13,12 +13,13 @@ public class Equipo {
         jugadores = new ArrayList<>();
     }
 
-    public String getNombre() {
-        return nombre;
-    }
+
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    public String getNombre() {
+        return nombre;
     }
 
     public List<Jugador> getJugadores() {
@@ -122,4 +123,6 @@ public class Equipo {
         return nombre;
     }
 
+
 }
+
