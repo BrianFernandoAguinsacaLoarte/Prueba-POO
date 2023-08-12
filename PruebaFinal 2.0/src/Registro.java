@@ -8,6 +8,7 @@ public class Registro {
     private List<Grupo> grupos = new ArrayList<>();
     private List<Usuario> usuarios;
     private Grupo grupo;
+    private Reglamento reglamento;
 
     public Registro() {
         usuarios = new ArrayList<>();
@@ -30,6 +31,7 @@ public class Registro {
         while (seguirRegistrando) {
             System.out.println("¡Advertencia! Escoger el rol de jugador es para equipos individuales.");
             System.out.println("¡Si usted escoge el rol de Director_Tecnico es para generar un equipo.");
+            System.out.println("¡Si usted escoge el rol de Arbitro es para ver las reglas de los deportes sean grupales o individuales!");
             System.out.println("Escoja su rol (Jugador, Director_Tecnico, Arbitro):");
             String rol = scanner.nextLine();
 
@@ -56,17 +58,61 @@ public class Registro {
                     break;
                 case ARBITRO:
                     System.out.println("Usted ha elegido el rol de Árbitro.");
-                    break;
-                default:
-                    System.out.println("Rol no válido.");
-                    break;
-            }
+                    System.out.println("Seleccione una opción:");
+                    System.out.println("1. Ver todas las reglas");
+                    System.out.println("2. Ver regla específica");
+                    System.out.println("3. Agregar nueva regla");
+                    System.out.println("4. Modificar regla existente");
 
-            System.out.println("¿Desea ingresar otro rol? (Si/No):");
-            String respuesta = scanner.nextLine();
-            if (!respuesta.equalsIgnoreCase("Si")) {
-                seguirRegistrando = false;
-                System.out.println("Registro finalizado.");
+                    int opcion = scanner.nextInt();
+                    scanner.nextLine(); // Consumir la nueva línea pendiente después del nextInt()
+
+                    Reglamento reglamento = new Reglamento("Reglamento de Deportes Grupales", new Fecha(2023, 8, 1));
+
+                    switch (opcion) {
+                        case 1:
+                            reglamento.mostrarReglamento();
+                            break;
+                        case 2:
+                            System.out.println("Ingrese el índice de la regla que desea ver:");
+                            int indiceRegla = scanner.nextInt() - 1;
+                            scanner.nextLine(); // Consumir la nueva línea pendiente después del nextInt()
+                            String reglaEspecifica = reglamento.mostrarReglaEspecifica(indiceRegla);
+                            System.out.println("Regla " + (indiceRegla + 1) + ": " + reglaEspecifica);
+                            break;
+                        case 3:
+                            System.out.println("Ingrese la descripción de la nueva regla:");
+                            String nuevaDescripcion = scanner.nextLine();
+                            reglamento.agregarRegla(nuevaDescripcion);
+                            System.out.println("Regla " + reglamento.getNumeroReglas() + ": " + nuevaDescripcion + " agregada correctamente.");
+                            break;
+                        case 4:
+                            System.out.println("Ingrese el índice de la regla que desea modificar:");
+                            int indiceModificar = scanner.nextInt() - 1;
+                            scanner.nextLine(); // Consumir la nueva línea pendiente después del nextInt()
+
+                            System.out.println("Regla " + (indiceModificar + 1) + ": " + reglamento.mostrarReglaEspecifica(indiceModificar));
+
+                            System.out.println("Ingrese la nueva descripción de la regla:");
+                            String nuevaDescripcionModificada = scanner.nextLine();
+
+                            reglamento.modificarRegla(indiceModificar, nuevaDescripcionModificada);
+
+                            System.out.println("Regla " + (indiceModificar + 1) + ": " + reglamento.mostrarReglaEspecifica(indiceModificar) + " modificada correctamente.");
+                            break;
+
+                        default:
+                            System.out.println("Opción inválida.");
+                            break;
+                    }
+
+                    System.out.println("¿Desea ingresar otro rol? (Si/No):");
+                    String respuesta = scanner.nextLine();
+                    if (!respuesta.equalsIgnoreCase("Si")) {
+                        seguirRegistrando = false;
+                        System.out.println("Registro finalizado.");
+                    }
+                    break;
             }
         }
     }
