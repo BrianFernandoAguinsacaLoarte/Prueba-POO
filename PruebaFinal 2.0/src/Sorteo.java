@@ -16,13 +16,15 @@ public class Sorteo {
         String respuesta = scanner.nextLine();
 
         if (respuesta.equalsIgnoreCase(ganador)) {
-            return "¡Felicidades! Usted acertó. Ganó " + ganador+ " " + generarMarcadorAleatorio();
+            return "¡Felicidades! Usted acertó. Ganó " + ganador + " " + generarMarcadorAleatorio();
         } else if (respuesta.equalsIgnoreCase(perdedor)) {
-            return "Lo lamento pero ganó " + perdedor + " " + generarMarcadorAleatorio();
+            return "Lo lamento pero ganó " + ganador + " " + generarMarcadorAleatorio();
         } else {
             return "No acertó. Ganó " + ganador + " " + generarMarcadorAleatorio();
         }
     }
+
+
 
     private static String generarMarcadorAleatorio() {
         Random random = new Random();
@@ -31,4 +33,3 @@ public class Sorteo {
         return "con un marcador de " + golesEquipoGanador + " - " + golesEquipoPerdedor;
     }
 }
-
