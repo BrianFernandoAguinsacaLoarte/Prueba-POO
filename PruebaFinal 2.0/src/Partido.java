@@ -7,7 +7,19 @@ public class Partido {
     private String equipoLocal;
     private String equipoVisitante;
     private String nombrePartido;
-    private EstadoPartido estado;
+    EstadoPartido estado;
+    Fecha fecha;
+    Tiempo tiempo;
+    private Marcador marcador;
+
+
+    public Fecha getFecha() {
+        return fecha;
+    }
+
+    public Tiempo getTiempo() {
+        return tiempo;
+    }
 
     public EstadoPartido getEstado() {
         return estado;
@@ -18,6 +30,14 @@ public class Partido {
         this.equipoVisitante = equipoVisitante;
         this.nombrePartido = nombrePartido;
         this.estado = EstadoPartido.generarEstadoPartido();
+        this.marcador = new Marcador(0, 0);
+    }
+    public void setMarcador(Marcador marcador) {
+        this.marcador = marcador;
+    }
+
+    public Marcador getMarcador() {
+        return marcador;
     }
 
     public String getEquipoLocal() {
@@ -49,6 +69,7 @@ public class Partido {
         return nombresPartidos[new Random().nextInt(nombresPartidos.length)];
     }
 }
+
 
 
 
