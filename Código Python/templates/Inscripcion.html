@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ titulo }}
+{% endblock %}
+
+{% block contenido %}
+    <h1>{{ contenido1 }}</h1>
+    <body class="body">
+    <h1>Inscripcion</h1>
+    <form id="registrationForm" action="#" method="post">
+    {% csrf_token %}
+    <div id="playersContainer">
+      <div class="player">
+
+        <label for="fechaAprobacion">Fecha Aprobación:</label>
+        <input type="date" id="fechaAprobacion" name="fechaAprobacion">
+
+        <label for="fechaInscripcion">Fecha Inscripcion:</label>
+        <input type="date" id="fechaInscripcion" name="fechaInscripcion">
+
+        <label for="fechaRechazo">Fecha Rechazo:</label>
+        <input type="date" id="fechaRechazo" name="fechaRechazo">
+
+        <label>Estado:</label>
+        <select>
+            <option value="registrado">Registrado</option>
+            <option value="en_Proceso">En Proceso</option>
+            <option value="anulada">Anulada</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" id="InscripcionButton">Agregar Inscripcion</button>
+        <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from being submitted
+
+            // Use JavaScript to set the form's action attribute dynamically
+            var equipoUrl = '{% url "Equipo" %}';
+            document.getElementById('registrationForm').setAttribute('action', equipoUrl);
+
+            // Submit the form after setting the action
+            this.submit();
+        });
+      </script>
+
+    </form>
+    </body>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ titulo }}
+{% endblock %}
+
+{% block contenido %}
+
+    <body>
+    <h1>{{ contenido1 }}</h1>
+    <h1>Regla</h1>
+
+    <form id="registrationForm" action="#" method="post">
+    {% csrf_token %}
+
+    <div id="playersContainer">
+      <div class="player">
+
+        <label for="disciplina">Disciplina:</label>
+        <input type="text" id="disciplina" name="disciplina">
+
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion">
+      </div>
+    </div>
+
+      <button type="submit" id="ReglaButton">Agregar Regla</button>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from being submitted
+
+            // Use JavaScript to set the form's action attribute dynamically
+            var reglaUrl = '{% url "Reglamento" %}';
+            document.getElementById('registrationForm').setAttribute('action', reglaUrl);
+
+            // Submit the form after setting the action
+            this.submit();
+        });
+
+      </script>
+    </form>
+    </body>
+{% endblock %}
