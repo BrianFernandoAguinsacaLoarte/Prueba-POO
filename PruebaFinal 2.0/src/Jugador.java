@@ -9,6 +9,10 @@ public class Jugador {
 
     private String deporte;
 
+    public String getDeporte() {
+        return deporte;
+    }
+
     public Jugador() {
         // Constructor vacío
     }
@@ -92,8 +96,19 @@ public class Jugador {
 
     public void inscribirJugador() {
     }
-
+    public void mostrarInformacion() {
+        System.out.println("- Nombre: " + nombre + ", Edad: " + edad + ", Deporte: " + deporte + ", Posición: " + posicion);
+    }
     public boolean esValido() {
         return true;
+    }
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre +
+                "\nApellido: " + apellido +
+                "\nEdad: " + edad +
+                "\nDeporte: " + deporte +
+                "\nNúmero de camiseta: " + numeroDeCamiseta +
+                "\nPosición: " + posicion;
     }
 }
