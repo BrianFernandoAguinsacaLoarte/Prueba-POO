@@ -3,15 +3,21 @@ import java.util.List;
 
 public class Grupo {
     private List<String> equiposEnGrupo = new ArrayList<>();
+    private List<Jugador> jugadoresEnGrupo = new ArrayList<>();
     private String nombre;
     private List<Partido> partidos;
     private static final int LIMITE_EQUIPOS = 4;
-
+    private static final int LIMITE_JUGADORES = 4;
 
 
     public Grupo() {
             this.nombre = "Grupo ";
     }
+    public Grupo(String nombre) {
+        this.nombre = nombre;
+    }
+
+
     public void agregarEquipo(String nombreEquipo) {
         equiposEnGrupo.add(nombreEquipo);
     }
@@ -19,7 +25,12 @@ public class Grupo {
     public List<String> getEquiposEnGrupo() {
         return equiposEnGrupo;
     }
-
+    public void agregarJugador(Jugador jugador) {
+        jugadoresEnGrupo.add(jugador);
+    }
+    public List<Jugador> getJugadoresEnGrupo() {
+        return jugadoresEnGrupo;
+    }
     public static List<Grupo> definirGrupos(String[] equipos) {
         List<Grupo> gruposDefinidos = new ArrayList<>();
         Grupo grupoActual = new Grupo();
@@ -66,9 +77,26 @@ public class Grupo {
 
         return partidos;
     }
+    public void mostrarJugadoresEnGrupo() {
+        System.out.println("Jugadores en el " + nombre + ":");
+        for (Jugador jugador : jugadoresEnGrupo) {
+            System.out.println("- " + jugador.getNombre());
+        }
+    }
 
+    public void registrarJugadoresEnGrupo(List<Jugador> jugadores) {
+        if (jugadoresEnGrupo.size() + jugadores.size() > LIMITE_JUGADORES) {
+            System.out.println("No se pueden registrar más jugadores en este grupo.");
+            return;
+        }
 
+        for (Jugador jugador : jugadores) {
+            jugadoresEnGrupo.add(jugador);
+        }
 
-
-
+        System.out.println("¡Jugadores registrados en el grupo correctamente!");
+    }
+    public boolean puedeAgregarJugador() {
+        return jugadoresEnGrupo.size() < LIMITE_JUGADORES;
+    }
 }
