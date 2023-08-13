@@ -9,6 +9,10 @@ public class Registro {
     private List<Usuario> usuarios;
     private Grupo grupo;
     private Reglamento reglamento;
+    private List<Jugador> jugadoresRegistrados = new ArrayList<>();
+    private Grupo grupoJugadores;
+    private Temporada temporada;
+    private List<Jugador> jugadoresRegistradosEnTemporada = new ArrayList<>();
 
     public Registro() {
         usuarios = new ArrayList<>();
@@ -26,6 +30,7 @@ public class Registro {
         }
         return false;
     }
+
     public void realizarRegistro(Scanner scanner) {
         boolean seguirRegistrando = true;
         while (seguirRegistrando) {
@@ -37,23 +42,37 @@ public class Registro {
 
             switch (EleccionDeRol.valueOf(rol.toUpperCase())) {
                 case JUGADOR:
-                    Jugador jugador = new Jugador();
-                    jugador.registrarInfoJugador(scanner, new EscogerDeporteIndividual());
-                    System.out.println("Registro en proceso. Espere un momento...");
-                    Toolkit.getDefaultToolkit().beep();
-                    Inscripcion inscripcion = new Inscripcion();
-                    inscripcion.validarInscripcionDelJugador(
-                            jugador.getNombre(), jugador.getApellido(), jugador.getEdad(),
-                            jugador.getNumeroDeCamiseta(), jugador.getPosicion());
-
-                    EstadoInscripcion estado = inscripcion.getEstado();
-                    if (estado == EstadoInscripcion.Registrado) {
-                        System.out.println("¡Jugador inscrito correctamente!");
-                    } else {
-                        System.out.println("Jugador no inscrito. Revise los datos ingresados, por favor.");
+                    System.out.println("Desea visualizar la temporada ? (Si/No):");
+                    String respuestaTemporada = scanner.nextLine();
+                    if (respuestaTemporada.equalsIgnoreCase("Si")) {
+                        if (temporada != null) {
+                            temporada.verTemporada();
+                            System.out.println("Desea ver la temporada? (Si/No)");
+                            String respuestaVerTemporada = scanner.nextLine();
+                            if (respuestaVerTemporada.equalsIgnoreCase("Si")) {
+                                System.out.println("Jugadores en la temporada:");
+                                for (Jugador jugador : jugadoresRegistrados) {
+                                    jugador.mostrarInformacion();
+                                }
+                            }
+                        } else {
+                            System.out.println("No hay temporada actualmente.");
+                        }
                     }
+                    List<Jugador> jugadoresRegistrados = registrarJugadores(scanner);
+
                     break;
                 case DIRECTOR_TECNICO:
+                    System.out.println("Desea visualizar la temporada? (Si/No):");
+                    String respuestaTemporada1 = scanner.nextLine();
+                    if (respuestaTemporada1.equalsIgnoreCase("Si")) {
+                        if (temporada != null) {
+                            temporada.verTemporada();
+                            temporada.mostrarEquiposEnTemporada(); // Mostrar la información de los equipos en la temporada
+                        } else {
+                            System.out.println("No hay temporada actualmente.");
+                        }
+                    }
                     realizarRegistroEquipos(scanner);
                     break;
                 case ARBITRO:
@@ -100,22 +119,90 @@ public class Registro {
 
                             System.out.println("Regla " + (indiceModificar + 1) + ": " + reglamento.mostrarReglaEspecifica(indiceModificar) + " modificada correctamente.");
                             break;
-
                         default:
                             System.out.println("Opción inválida.");
                             break;
                     }
-
-                    System.out.println("¿Desea ingresar otro rol? (Si/No):");
-                    String respuesta = scanner.nextLine();
-                    if (!respuesta.equalsIgnoreCase("Si")) {
-                        seguirRegistrando = false;
-                        System.out.println("Registro finalizado.");
-                    }
-                    break;
+            }
+            System.out.println("¿Desea ingresar otro rol? (Si/No):");
+            String respuesta = scanner.nextLine();
+            if (!respuesta.equalsIgnoreCase("Si")) {
+                seguirRegistrando = false;
+                System.out.println("Registro finalizado.");
             }
         }
     }
+
+    private List<Jugador> registrarJugadores(Scanner scanner) {
+        List<Jugador> jugadoresNuevos = new ArrayList<>();
+        boolean seguirRegistrandoJugadores = true;
+        int contadorGruposJugador = 1; // Inicializar el contador
+
+        Grupo grupoJugadores = new Grupo("Grupo A"); // Cambiar nombre del grupo
+
+        while (seguirRegistrandoJugadores) {
+            Jugador jugador = new Jugador();
+            jugador.registrarInfoJugador(scanner, new EscogerDeporteIndividual());
+            System.out.println("Registro en proceso. Espere un momento...");
+            Toolkit.getDefaultToolkit().beep();
+            Inscripcion inscripcion = new Inscripcion();
+            inscripcion.validarInscripcionDelJugador(
+                    jugador.getNombre(), jugador.getApellido(), jugador.getEdad(),
+                    jugador.getNumeroDeCamiseta(), jugador.getPosicion());
+
+            EstadoInscripcion estado = inscripcion.getEstado();
+            if (estado == EstadoInscripcion.Registrado) {
+                jugadoresNuevos.add(jugador);
+                System.out.println("¡Jugador inscrito correctamente!");
+                System.out.println("¿Desea registrar otro jugador? (Si/No):");
+                String respuestaJugador = scanner.nextLine();
+                if (!respuestaJugador.equalsIgnoreCase("Si")) {
+                    seguirRegistrandoJugadores = false;
+                }
+            } else {
+                System.out.println("Jugador no inscrito. Revise los datos ingresados, por favor.");
+            }
+
+            // Registrar los jugadores en el grupo
+            if (!grupoJugadores.puedeAgregarJugador()) {
+                contadorGruposJugador++;
+                grupoJugadores = new Grupo("Grupo " + (char) ('A' + contadorGruposJugador - 1)); // Cambiar nombre y letra del grupo
+            }
+            grupoJugadores.agregarJugador(jugador);
+        }
+        jugadoresRegistradosEnTemporada.addAll(jugadoresNuevos);
+        temporada = new Temporada("Temporada 2023", new Fecha(2023, 8, 10), new Fecha(2023, 12, 31)); // Crear una nueva instancia de Temporada
+        temporada.agregarJugadores(jugadoresNuevos);
+
+        System.out.println("Temporada: " + temporada.getNombre()); // Mostrar nombre de la temporada
+        System.out.println("Modo de Juego de la Temporada: " + temporada.getModoDeJuego()); // Mostrar modo de juego aleatorio
+        System.out.println("Fecha de inicio: " + temporada.getFechaInicio()); // Mostrar fecha de inicio
+        System.out.println("Fecha de finalización: " + temporada.getFechaFin()); // Mostrar fecha de finalización
+        System.out.println("Desea visualizar la temporada nuevamente? (Si/No):");
+        String respuestaVerTemporada = scanner.nextLine();
+        if (respuestaVerTemporada.equalsIgnoreCase("Si")) {
+            if (!jugadoresNuevos.isEmpty()) {
+                System.out.println("Jugadores en la temporada:");
+                for (Jugador jugador : jugadoresNuevos) {
+                    jugador.mostrarInformacion();
+                }
+            } else {
+                System.out.println("No hay jugadores inscritos en la temporada.");
+            }
+        }
+
+        System.out.println("Desea visualizar los grupos? (Si/No):");
+        String respuestaGrupos = scanner.nextLine();
+        if (respuestaGrupos.equalsIgnoreCase("Si")) {
+            grupoJugadores.mostrarJugadoresEnGrupo();
+        }
+        System.out.println("En unos momentos se definirán los grupos. Espere un momento...");
+        grupoJugadores.mostrarJugadoresEnGrupo();
+        System.out.println("Los Enfrentamientos se definirán muy pronto.....");
+        Partido.generarEnfrentamientosIndividuales(grupoJugadores.getJugadoresEnGrupo());
+        return jugadoresNuevos;
+    }
+
 
     private void realizarRegistroEquipos(Scanner scanner) {
         boolean seguirInscribiendoEquipos = true;
@@ -157,49 +244,73 @@ public class Registro {
                 for (Equipo equipoInscrito : equiposInscritos) {
                     System.out.println("- " + equipoInscrito.getNombre());
                 }
-
-                // Generar y mostrar los grupos
-                System.out.println("En unos momentos se definirán los grupos. Espere un momento...");
-                List<String> nombresEquipos = new ArrayList<>();
-                for (Equipo equipoInscrito : equiposInscritos) {
-                    nombresEquipos.add(equipoInscrito.getNombre());
-                }
-
-                String[] arrayNombresEquipos = nombresEquipos.toArray(new String[nombresEquipos.size()]);
-                List<Grupo> gruposDefinidos = Grupo.definirGrupos(arrayNombresEquipos);
-                int contadorGrupos = 1;
-
-                for (Grupo grupo : gruposDefinidos) {
-                    List<String> equiposEnGrupo = grupo.getEquiposEnGrupo();
-                    if (!equiposEnGrupo.isEmpty()) {
-                        System.out.println("Grupo " + contadorGrupos + ":");
-                        contadorGrupos++;
-                        for (String nombreEquipo : equiposEnGrupo) {
-                            System.out.println("- " + nombreEquipo);
-                        }
+                temporada = new Temporada("Temporada 2023", new Fecha(2023, 8, 10), new Fecha(2023, 12, 31)); // Crear una nueva instancia de Temporada
+                System.out.println("Temporada: " + temporada.getNombre()); // Mostrar nombre de la temporada
+                System.out.println("Fecha de inicio: " + temporada.getFechaInicio()); // Mostrar fecha de inicio
+                System.out.println("Fecha de finalización: " + temporada.getFechaFin()); // Mostrar fecha de finalización
+                System.out.println("¿Desea ver la temporada actualizada? (Si/No):");
+                String respuestaTemporada = scanner.nextLine();
+                if (respuestaTemporada.equalsIgnoreCase("Si")) {
+                    if (temporada != null) {
+                        temporada.verTemporada();
                     }
 
-                    List<Partido> partidos = grupo.generarPartidos();
-                    System.out.println("Los Partidos se definirán muy pronto.....");
-                    for (Partido partido : partidos) {
-                        System.out.println("El partido iniciará a las " + partido.getTiempo() +
-                                " el día " + partido.getFecha());
-                        System.out.println("- " + partido.getEquipoLocal() + " vs " + partido.getEquipoVisitante() +
-                                " (" + partido.getNombrePartido() + ") estado: " + partido.getEstado());
 
-                        if (partido.getEstado() == EstadoPartido.Iniciado) {
-                            System.out.println(Sorteo.realizarSorteo(partido));
-                        } else if (partido.getEstado() == EstadoPartido.Entretiempo) {
-                            System.out.println("El partido se encuentra en entretiempo.");
-                            Marcador marcador = Marcador.generarMarcadorAleatorio();
-                            System.out.println("Marcador: " + marcador); // Mostrar el marcador generado
-                        } else if (partido.getEstado() == EstadoPartido.Finalizado) {
-                            Marcador marcadorFinal = Marcador.generarMarcadorAleatorio();
-                            System.out.println("Marcador final: " + marcadorFinal); // Mostrar el marcador final generado
+                        // Mostrar información de los equipos ingresados
+                        System.out.println("Equipos ingresados:");
+                        for (Equipo equipoInscrito : equiposInscritos) {
+                            equipoInscrito.mostrarInformacionEquipo();
+                        }
+
+
+                        // Preguntar si desea ver los grupos
+                        System.out.println("¿Desea ver los grupos? (Si/No):");
+                        String respuestaGrupos = scanner.nextLine();
+                        if (respuestaGrupos.equalsIgnoreCase("Si")) {
+                            // Generar y mostrar los grupos
+                            System.out.println("En unos momentos se definirán los grupos. Espere un momento...");
+                            List<String> nombresEquipos = new ArrayList<>();
+                            for (Equipo equipoInscrito : equiposInscritos) {
+                                nombresEquipos.add(equipoInscrito.getNombre());
+                            }
+                            String[] arrayNombresEquipos = nombresEquipos.toArray(new String[nombresEquipos.size()]);
+                            List<Grupo> gruposDefinidos = Grupo.definirGrupos(arrayNombresEquipos);
+                            int contadorGrupos = 1;
+
+                            for (Grupo grupo : gruposDefinidos) {
+                                List<String> equiposEnGrupo = grupo.getEquiposEnGrupo();
+                                if (!equiposEnGrupo.isEmpty()) {
+                                    System.out.println("Grupo " + contadorGrupos + ":");
+                                    contadorGrupos++;
+                                    for (String nombreEquipo : equiposEnGrupo) {
+                                        System.out.println("- " + nombreEquipo);
+                                    }
+                                }
+
+                                List<Partido> partidos = grupo.generarPartidos();
+                                System.out.println("Los Partidos se definirán muy pronto.....");
+                                for (Partido partido : partidos) {
+                                    System.out.println("El partido iniciará a las " + partido.getTiempo() +
+                                            " el día " + partido.getFecha());
+                                    System.out.println("- " + partido.getEquipoLocal() + " vs " + partido.getEquipoVisitante() +
+                                            " (" + partido.getNombrePartido() + ") estado: " + partido.getEstado());
+
+                                    if (partido.getEstado() == EstadoPartido.Iniciado) {
+                                        System.out.println(Sorteo.realizarSorteo(partido));
+                                    } else if (partido.getEstado() == EstadoPartido.Entretiempo) {
+                                        System.out.println("El partido se encuentra en entretiempo.");
+                                        Marcador marcador = Marcador.generarMarcadorAleatorio();
+                                        System.out.println("Marcador: " + marcador); // Mostrar el marcador generado
+                                    } else if (partido.getEstado() == EstadoPartido.Finalizado) {
+                                        Marcador marcadorFinal = Marcador.generarMarcadorAleatorio();
+                                        System.out.println("Marcador final: " + marcadorFinal); // Mostrar el marcador final generado
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
+
         }
     }
-}
