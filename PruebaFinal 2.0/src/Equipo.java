@@ -122,6 +122,18 @@ public class Equipo {
     public String toString() {
         return nombre;
     }
+    public void mostrarInformacionEquipo() {
+        System.out.println("Nombre del equipo: " + nombre);
+        System.out.println("Deporte: " + deporte);
+        System.out.println("Categoría: " + categoria);
+        System.out.println("Jugadores: ");
+        for (Jugador jugador : jugadores) {
+            System.out.println("- Nombre: " + jugador.getNombre() +
+                    ", Edad: " + jugador.getEdad() +
+                    ", Número de camiseta: " + jugador.getNumeroDeCamiseta() +
+                    ", Posición: " + jugador.getPosicion());
+        }
+    }
 
 
 }
