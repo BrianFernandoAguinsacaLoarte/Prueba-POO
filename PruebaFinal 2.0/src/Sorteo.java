@@ -24,12 +24,15 @@ public class Sorteo {
         }
     }
 
-
-
     private static String generarMarcadorAleatorio() {
         Random random = new Random();
         int golesEquipoGanador = random.nextInt(5) + 1; // Goles entre 1 y 5
         int golesEquipoPerdedor = random.nextInt(golesEquipoGanador); // Goles del perdedor menor a los del ganador
         return "con un marcador de " + golesEquipoGanador + " - " + golesEquipoPerdedor;
     }
+
+
 }
+
+
+
