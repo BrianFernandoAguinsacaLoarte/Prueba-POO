@@ -7,11 +7,13 @@ public class Marcador {
     private int golesEquipoVisitante;
     private EstadoPartido estado;
     private Marcador marcador;
-
+    private int puntosEquipoVisitante;
+    private int puntosEquipoLocal;
     public Marcador(int golesEquipoLocal, int golesEquipoVisitante) {
         this.golesEquipoLocal = golesEquipoLocal;
         this.golesEquipoVisitante = golesEquipoVisitante;
     }
+
     public void iniciarPartido() {
         this.estado = EstadoPartido.Iniciado;
     }
@@ -23,6 +25,14 @@ public class Marcador {
         return golesEquipoVisitante;
     }
 
+    public int getPuntosEquipoVisitante() {
+        return puntosEquipoVisitante;
+    }
+
+    public int getPuntosEquipoLocal() {
+        return puntosEquipoLocal;
+    }
+
     public static Marcador generarMarcadorAleatorio() {
         Random random = new Random();
         int golesEquipoLocal = random.nextInt(6) + 1;    // Goles entre 1 y 5
@@ -31,10 +41,9 @@ public class Marcador {
     }
 
 
+
     @Override
     public String toString() {
         return golesEquipoLocal + " - " + golesEquipoVisitante;
     }
 }
-
-
