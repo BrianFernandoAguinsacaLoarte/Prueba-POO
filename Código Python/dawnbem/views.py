@@ -1,8 +1,10 @@
+from random import sample
 
 from django.shortcuts import render, redirect
 
-from dawnbem.forms import RegistroForm, JugadorForm, InscripcionForm, EquipoForm, PartidoForm, MarcadorForm, TemporadaForm, ReglamentoForm, ReglaForm
-from dawnbem.models import Registro, Jugador, Inscripcion, Equipo, Partido, Marcador, Temporada, Reglamento, Regla
+from dawnbem.forms import RegistroForm, JugadorForm, InscripcionForm, EquipoForm, PartidoForm, MarcadorForm, TemporadaForm, ReglamentoForm, ReglaForm, SorteoForm, GrupoForm
+from dawnbem.models import Registro, Jugador, Inscripcion, Equipo, Partido, Marcador, Temporada, Reglamento, Regla, \
+    Sorteo, Grupo, RevisionInscripcion
 
 
 # Create your views here.
@@ -49,14 +51,14 @@ def equipo(request):
     }
     return render(request, 'Equipo.html', contexto)
 
-def Grupo(request):
+def grupo(request):
     contexto = {
         'titulo': 'Grupo',
         'contenido1': 'Inscripcion de Grupo',
     }
     return render(request, 'Grupo.html', contexto)
 
-def Sorteo(request):
+def sorteo(request):
     contexto = {
         'titulo': 'Sorteo',
         'contenido1': 'Inscripcion de Sorteo',
@@ -209,7 +211,8 @@ def eliminar_jugador(request, id):
 
 def inscripcion_detail(request,id):
     inscripcion = Inscripcion.objects.get(id=id)
-    context = {'inscripcion': inscripcion}
+    context = {'inscripcion': inscripcion,
+            }
     return render(request, 'inscripcionDetail.html', context)
 
 def nueva_inscripcion(request):
@@ -237,9 +240,28 @@ def editar_inscripcion(request, id):
     inscripcion_list = Inscripcion.objects.all()
     context = {'form': form,
                'inscripcion_list': inscripcion_list,
-               'inscripcion': inscripcion
+               'inscripcion': inscripcion,
                }
     return render(request, 'inscripcionEditar.html', context)
+
+def validar_inscripciones(request):
+    inscripcion_list = Inscripcion.objects.all()
+    inscripciones_pendientes = RevisionInscripcion.objects.filter(EstadoInscripcion=None).select_related(
+        'Inscripcion__jugador__registro')
+
+    if request.method == 'POST':
+        if request.method == 'POST':
+            for inscripcion in inscripciones_pendientes:
+                estado = request.POST.get(f'estado_{inscripcion.id}')
+                if estado in ['APROBADO', 'RECHAZADO']:
+                    inscripcion.EstadoInscripcion = estado
+                    inscripcion.save()
+
+    context = {
+        'inscripcion_list': inscripcion_list,
+        'inscripciones_pendientes': inscripciones_pendientes,
+    }
+    return render(request, 'inscripcionValidar.html', context)
 
 def eliminar_inscripcion(request, id):
     inscripcion_list = Inscripcion.objects.all()
@@ -294,23 +316,120 @@ def eliminar_equipo(request, id):
     equipo.delete()
     return redirect('equipoNuevo')
 
+def sorteo_detail(request,id):
+    sorteo = Sorteo.objects.get(id=id)
+    context = {'sorteo': sorteo}
+    return render(request, 'sorteoDetail.html', context)
+def nuevo_sorteo(request):
+    if request.method == 'POST':
+        form = SorteoForm(request.POST)
+        if form.is_valid():
+            sorteo = form.save()
+
+            equipos_participantes = list(sorteo.Equipo_list.all())
+            cantidad_equipos = len(equipos_participantes)
+
+            if cantidad_equipos >= 2:
+                equipos_aleatorios = sample(equipos_participantes, cantidad_equipos)
+                mitad_equipos = cantidad_equipos // 2
+
+                equipos_locales = equipos_aleatorios[:mitad_equipos]
+                equipos_visitantes = equipos_aleatorios[mitad_equipos:]
+
+                sorteo.equipos_locales.set(equipos_locales)
+                sorteo.equipos_visitantes.set(equipos_visitantes)
+                sorteo.save()
+
+            return redirect('sorteoNuevo')
+
+    form = SorteoForm()
+    sorteo_list = Sorteo.objects.all()
+    context = {'form': form, 'sorteo_list': sorteo_list}
+    return render(request, 'sorteoNuevo.html', context)
+
+def editar_sorteo(request, id):
+    sorteo = Sorteo.objects.get(id=id)
+    if request.method == 'POST':
+        form = SorteoForm(request.POST, instance=sorteo)
+        if form.is_valid():
+            form.save()
+            return redirect('sorteoNuevo')
+
+    form = SorteoForm(instance=sorteo)
+    sorteo_list = Sorteo.objects.all()
+    context = {'form': form,
+               'sorteo_list': sorteo_list,
+               'sorteo': sorteo
+               }
+    return render(request, 'sorteoEditar.html', context)
+
+def eliminar_sorteo(request, id):
+    sorteo_list = Sorteo.objects.all()
+
+    sorteo = Sorteo.objects.get(id=id)
+    sorteo.delete()
+    return redirect('sorteoNuevo')
+
+def grupo_detail(request,id):
+    grupo = Grupo.objects.get(id=id)
+    context = {'grupo': grupo}
+    return render(request, 'grupoDetail.html', context)
+
+def nuevo_grupo(request):
+    if request.method == 'POST':
+        form = GrupoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('grupoNuevo')
+
+    form = GrupoForm()
+    grupo_list = Grupo.objects.all()
+    context = {'form': form,
+               'grupo_list': grupo_list
+               }
+    return render(request, 'grupoNuevo.html', context)
+
+def editar_grupo(request, id):
+    grupo = Grupo.objects.get(id=id)
+    if request.method == 'POST':
+        form = GrupoForm(request.POST, instance=grupo)
+        if form.is_valid():
+            form.save()
+            return redirect('grupoNuevo')
+
+    form = GrupoForm(instance=grupo)
+    grupo_list = Grupo.objects.all()
+    context = {'form': form,
+               'grupo_list': grupo_list,
+               'grupo': grupo
+               }
+    return render(request, 'grupoEditar.html', context)
+
+def eliminar_grupo(request, id):
+    sorteo_list = Sorteo.objects.all()
+
+    grupo = Grupo.objects.get(id=id)
+    grupo.delete()
+    return redirect('grupoNuevo')
+
 def partido_detail(request,id):
     partido = Partido.objects.get(id=id)
-    context = {'partido': partido}
+    context = {'partido': partido,
+               }
     return render(request, 'partidoDetail.html', context)
-
 def nuevo_partido(request):
     if request.method == 'POST':
         form = PartidoForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('partidoNuevo')
-    else:
-        form = PartidoForm()
 
+    form = PartidoForm()
     partido_list = Partido.objects.all()
+    equipo_list = Equipo.objects.all()
     context = {'form': form,
-               'partido_list': partido_list
+               'partido_list': partido_list,
+               'equipo_list': equipo_list
                }
     return render(request, 'partidoNuevo.html', context)
 
@@ -324,8 +443,10 @@ def editar_partido(request, id):
 
     form = PartidoForm(instance=partido)
     partido_list = Partido.objects.all()
+    equipo_list = Equipo.objects.all()
     context = {'form': form,
                'partido_list': partido_list,
+               'equipo_list': equipo_list,
                'partido': partido
                }
     return render(request, 'partidoEditar.html', context)
@@ -341,7 +462,8 @@ def eliminar_partido(request, id):
 
 def marcador_detail(request,id):
     marcador = Marcador.objects.get(id=id)
-    context = {'marcador': marcador}
+    context = {'marcador': marcador,
+               }
     return render(request, 'marcadorDetail.html', context)
 
 def nuevo_marcador(request):
@@ -472,8 +594,13 @@ def eliminar_reglamento(request, id):
 
 def regla_detail(request,id):
     regla = Regla.objects.get(id=id)
-    context = {'regla': regla}
+    context = {'regla': regla,}
     return render(request, 'reglaDetail.html', context)
+
+def regla_visualizar(request):
+    regla_list = Regla.objects.all()
+    context = {'regla_list': regla_list}
+    return render(request, 'reglaVisualizar.html', context)
 
 def nueva_regla(request):
     if request.method == 'POST':
@@ -516,3 +643,10 @@ def eliminar_regla(request, id):
 
 def inicio(request):
     return render(request, 'inicio.html')
+
+
+
+def admin_detail(request,id):
+    admin = Inscripcion.objects.get(id=id)
+    context = {'admin': admin}
+    return render(request, 'AdminMenu.html', context)
