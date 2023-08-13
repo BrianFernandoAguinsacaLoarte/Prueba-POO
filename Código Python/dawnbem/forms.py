@@ -1,7 +1,8 @@
 from django import forms
 
 
-from dawnbem.models import Registro, Jugador, Inscripcion, Equipo, Partido, Marcador, Temporada, Reglamento, Regla
+from dawnbem.models import Registro, Jugador, Inscripcion, Equipo, Partido, Marcador, Temporada, Reglamento, Regla, \
+    Sorteo, Grupo
 
 
 class RegistroForm(forms.ModelForm):
@@ -52,8 +53,14 @@ class RegistroForm(forms.ModelForm):
 class JugadorForm(forms.ModelForm):
     class Meta:
         model = Jugador
-        fields = ['numero_Camiseta', 'posicion', 'registro']
+        fields = ['registro', 'numero_Camiseta', 'posicion', ]
         widgets = {
+            'registro': forms.Select(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su registro'
+                }
+            ),
             'numero_Camiseta': forms.NumberInput(
                 attrs={
                     'class': 'form-control',
@@ -66,47 +73,24 @@ class JugadorForm(forms.ModelForm):
                     'placeholder': 'Ingrese su posición'
                 }
             ),
-            'registro': forms.Select(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Ingrese su registro'
-                }
-            ),
+
         }
         labels = {
+           'registro': 'Registro',
            'numero_Camiseta': 'Número de camiseta',
            'posicion': 'Posición',
-           'registro': 'Registro',
+
         }
 
 class InscripcionForm(forms.ModelForm):
     class Meta:
         model = Inscripcion
-        fields = ['fecha_Inscripcion', 'fecha_Aprobacion', 'fecha_Rechazo', 'estado_Inscripcion', 'jugador']
+        fields = ['fecha_solicitud', 'jugador','EstadoInscripcion']
         widgets = {
-            'fecha_Inscripcion': forms.DateTimeInput(
+            'fecha_solicitud': forms.DateTimeInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Ingrese su fecha de inscripción'
-
-                }
-            ),
-            'fecha_Aprobacion': forms.DateTimeInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Ingrese su fecha de aprobación'
-                }
-            ),
-            'fecha_Rechazo': forms.DateTimeInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Ingrese su fecha de rechazo'
-                }
-            ),
-            'estado_Inscripcion': forms.Select(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Ingrese su estado de inscripción'
+                    'placeholder': 'Ingrese su fecha de solicitud'
                 }
             ),
             'jugador': forms.Select(
@@ -115,22 +99,21 @@ class InscripcionForm(forms.ModelForm):
                     'placeholder': 'Ingrese su jugador'
                 }
             ),
+            'EstadoInscripcion': forms.HiddenInput(),
 
         }
         labels = {
-            'fecha_Inscripcion': 'Fecha de inscripción',
-            'fecha_Aprobacion': 'Fecha de aprobación',
-            'fecha_Rechazo': 'Fecha de rechazo',
-            'estado_Inscripcion': 'Estado de inscripción',
+            'fecha_solicitud': 'Fecha de solicitud',
             'jugador': 'Jugador',
+            'EstadoInscripcion': 'Estado de inscripción',
         }
 
 
 class EquipoForm(forms.ModelForm):
-    Inscripcion = forms.ModelMultipleChoiceField(
-        queryset=Jugador.objects.all(),
-        widget=forms.SelectMultiple(attrs={'class': 'form-control'}),
-        label='Inscripción (seleccione jugadores)')
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Filtrar las inscripciones registradas y establecer el queryset del campo 'inscripcion'
+        self.fields['inscripcion'].queryset = Inscripcion.objects.filter(EstadoInscripcion='Registrado')
 
     class Meta:
         model = Equipo
@@ -139,7 +122,7 @@ class EquipoForm(forms.ModelForm):
             'nombre': forms.TextInput(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Ingrese su nombre'
+                    'placeholder': 'Ingrese el nombre del Equipo'
                 }
             ),
             'numero_Jugadores': forms.NumberInput(
@@ -165,15 +148,16 @@ class EquipoForm(forms.ModelForm):
             'nombre': 'Nombre',
             'numero_Jugadores': 'Número de jugadores',
             'categoria': 'Categoría',
-            'inscripcion': 'Inscripción',
+            'inscripcion': 'Inscripciones Registradas',
         }
+
 
 class PartidoForm(forms.ModelForm):
     class Meta:
         model = Partido
-        fields = ['fecha', 'hora', 'numero_encuentro', 'estado', 'grupo']
+        fields = ['fecha','hora','numero_encuentro','equipo_local','equipo_visitante','estado']
         widgets = {
-            'fecha': forms.DateInput(
+            'fecha': forms.DateTimeInput(
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Ingrese su fecha'
@@ -191,26 +175,31 @@ class PartidoForm(forms.ModelForm):
                     'placeholder': 'Ingrese su número de encuentro'
                 }
             ),
+            'equipo_local': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su equipo local'
+                }
+            ),
+            'equipo_visitante': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su equipo visitante'
+                }
+            ),
             'estado': forms.Select(
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Ingrese su estado'
                 }
             ),
-            'grupo': forms.Select(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Ingrese su grupo'
-                }
-            ),
-
         }
         labels = {
             'fecha': 'Fecha',
             'hora': 'Hora',
             'numero_encuentro': 'Número de encuentro',
             'estado': 'Estado',
-            'grupo': 'Grupo',
+
         }
 
 class MarcadorForm(forms.ModelForm):
@@ -298,12 +287,18 @@ class TemporadaForm(forms.ModelForm):
 class ReglamentoForm(forms.ModelForm):
     class Meta:
         model = Reglamento
-        fields = ['nombre', 'fecha', 'Temporada']
+        fields = ['nombre','descripcion', 'fecha', 'regla_list']
         widgets = {
             'nombre': forms.TextInput(
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Ingrese su nombre'
+                }
+            ),
+            'descripcion': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su descripción'
                 }
             ),
             'fecha': forms.DateInput(
@@ -312,24 +307,31 @@ class ReglamentoForm(forms.ModelForm):
                     'placeholder': 'Ingrese su fecha'
                 }
             ),
-            'Temporada': forms.Select(
+            'regla_list': forms.SelectMultiple(
                 attrs={
                     'class': 'form-control',
-                    'placeholder': 'Ingrese su temporada'
+                    'placeholder': 'Ingrese su lista de reglas'
                 }
             ),
         }
         labels = {
             'nombre': 'Nombre',
             'fecha': 'Fecha',
-            'Temporada': 'Temporada',
+            'descripcion': 'Descripción',
+            'regla_list': 'Lista de reglas',
         }
 
 class ReglaForm(forms.ModelForm):
     class Meta:
         model = Regla
-        fields = ['descripcion']
+        fields = ['nombre_regla','descripcion']
         widgets = {
+            'nombre_regla': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su nombre de regla'
+                }
+            ),
             'descripcion': forms.TextInput(
                 attrs={
                     'class': 'form-control',
@@ -338,5 +340,81 @@ class ReglaForm(forms.ModelForm):
             ),
         }
         labels = {
+            'nombre_regla': 'Nombre de regla',
             'descripcion': 'Descripción',
+        }
+
+class SorteoForm(forms.ModelForm):
+    class Meta:
+        model= Sorteo
+        fields = ['fecha', 'hora', 'Equipo_list','equipos_locales', 'equipos_visitantes']
+        widgets = {
+            'fecha': forms.DateInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'dd/mm/aaaa'
+                }
+            ),
+            'hora': forms.TimeInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'hh:mm:ss'
+                }
+            ),
+            'Equipo_list': forms.SelectMultiple(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su equipo'
+                }
+            ),
+            'equipos_locales': forms.SelectMultiple(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su equipo local'
+                }
+            ),
+            'equipos_visitantes': forms.SelectMultiple(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su equipo visitante'
+                }
+            ),
+        }
+        labels = {
+            'fecha': 'Fecha',
+            'hora': 'Hora',
+            'Equipo_list': 'Equipo',
+            'equipos_locales': 'Equipo local',
+            'equipos_visitantes': 'Equipo visitante',
+        }
+
+class GrupoForm(forms.ModelForm):
+    class Meta:
+        model = Grupo
+        fields = ['nombre', 'capacidad_maxima_equipos', 'EquipoList']
+        widgets = {
+            'nombre': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su nombre'
+                }
+            ),
+            'capacidad_maxima_equipos': forms.NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su capacidad máxima de equipos'
+                }
+            ),
+
+            'EquipoList': forms.SelectMultiple(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su equipo'
+                }
+            ),
+        }
+        labels = {
+            'nombre': 'Nombre',
+            'capacidad_maxima_equipos': 'Capacidad máxima de equipos',
+            'EquipoList': 'Equipo',
         }
