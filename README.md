@@ -23,7 +23,7 @@
 
 ### UML
 <div align="center">
-    <img src="https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/a9eb638f-42d3-43da-9af7-a12e0fe07ace" alt="UML">
+    <img src="https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/f2a89f01-1976-464a-bd4f-68147b448f9c" alt="UML">
 </div>
 
 
