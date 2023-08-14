@@ -20,7 +20,7 @@
 
 ### **UML**
 <div align="center">
-    <img src="https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/0b93658e-ffce-4bb9-a059-f6d4f6fc9e5a" alt="UML">
+    <img src="https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/f2a0623d-72a1-46f2-a640-332e81bd5f9c" alt="UML">
 </div>
 
 ## **Documento de Prueba:**
