@@ -25,8 +25,14 @@
 
 ## **Documento de Prueba:**
 
+
 [<span style="color:#336699">Enlace al documento en Google Drive</span>](https://drive.google.com/drive/folders/1JNDQEG24IaQpI-EorblGpXLWMFO-iv3X?usp=sharing)
 
 ## **Repositorio en GitHub:**
 
 [<span style="color:#336699">Repositorio en GitHub</span>](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO.git)
+ 
+
+ ## **Pagina :**
+ [<span style="color:#336699">Repositorio en GitHub</span>]( http://127.0.0.1:8000/)
+
