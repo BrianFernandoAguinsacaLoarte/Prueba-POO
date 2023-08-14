@@ -37,3 +37,7 @@
 
 ## Repositorio en GitHub
 [Enlace al repositorio en GitHub](https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO.git)
+
+## Repositorio de pagina
+[Enlace al repositorio en GitHub](http://127.0.0.1:8000/)
+
