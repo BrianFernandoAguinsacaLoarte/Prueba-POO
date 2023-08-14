@@ -17,9 +17,10 @@
 
 ## Imágenes del proyecto:
 
+
 ### UML
 <p align="center">
-  <img src="https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/bc0024a7-0a92-4a15-ab91-19f93f65c683" alt="umlNew drawio">
+  <img src="https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/23cddd07-61ad-4db2-bec5-cd2328510d5d  ">
 </p>
 
 ### Gestión del proyecto en GitKraken
