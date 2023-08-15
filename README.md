@@ -3,6 +3,14 @@
 <p align="center">
   <img src="https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/6715c1a6-d1b7-4965-ae26-057fb9f7b0d1" alt="WhatsApp Image 2023-08-08 at 10 51 01">
 </p>
+<div align="center">
+    <img src="https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/6f451f7e-a1d3-447c-a3bc-e1c100745571" alt="Imagen 1">
+</div>
+
+<div align="center">
+    <img src="https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/016c81ef-c3d4-4862-8275-2ceebd9cb3b2" alt="Imagen 2">
+</div>
+
 
 <p align="center">
   <img src="https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/118997463/b53f20e3-c28d-4730-9296-0d0430b15976" alt="WhatsApp Image 2023-07-12 at 8 41 59 PM">
