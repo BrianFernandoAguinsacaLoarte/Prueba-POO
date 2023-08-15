@@ -1,4 +1,4 @@
- # BEMAD: COMPETENCIAS DEPORTIVAS
+
 
 <p align="center">
   <img src="https://github.com/BrianFernandoAguinsacaLoarte/PruebaPOO/assets/131829158/6715c1a6-d1b7-4965-ae26-057fb9f7b0d1" alt="WhatsApp Image 2023-08-08 at 10 51 01">
